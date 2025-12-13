@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Play, Layers } from "lucide-react"
+import { Play, Layers, X } from "lucide-react"
 import { useState } from "react"
+import Image from "next/image"
 
 const videos3D = [
   {
@@ -93,10 +94,17 @@ export default function Video3DGallery() {
                 onClick={() => setSelectedVideo(video)}
               >
                 <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-800 mb-4 border border-gray-700">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url(${video.thumbnail})` }}
+                  {/* ✅ Image với lazy loading thay cho background-image */}
+                  <Image
+                    src={video.thumbnail || "/placeholder.svg"}
+                    alt={video.title}
+                    fill
+                    className="object-cover"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
+                  
+                  {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/60 transition-colors duration-300" />
 
                   {/* 3D badge */}
@@ -132,22 +140,57 @@ export default function Video3DGallery() {
         </div>
       </section>
 
-      {/* Video modal */}
+      {/* Video modal với animation mượt */}
       {selectedVideo && (
-        <div
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
           onClick={() => setSelectedVideo(null)}
         >
-          <div className="relative max-w-6xl w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden border border-purple-500/30">
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors z-10"
+            onClick={() => setSelectedVideo(null)}
+            aria-label="Đóng"
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+
+          {/* Video container */}
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
+            className="relative max-w-6xl w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Placeholder content - Thay bằng video player thực tế */}
             <div className="absolute inset-0 flex items-center justify-center text-white">
               <div className="text-center">
-                <Layers className="w-16 h-16 mx-auto mb-4 opacity-50 text-purple-400" />
-                <p className="text-xl font-medium">{selectedVideo.title}</p>
-                <p className="text-sm text-gray-400 mt-2">Video 3D sẽ được tích hợp ở đây</p>
+                <Layers className="w-16 h-16 mx-auto mb-4 opacity-50 text-purple-400 animate-pulse" />
+                <p className="text-xl font-medium mb-2">{selectedVideo.title}</p>
+                <p className="text-sm text-gray-400 mb-4">Video 3D sẽ được tích hợp ở đây</p>
+                <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
+                  <span className="flex items-center gap-2">
+                    <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
+                    {selectedVideo.category}
+                  </span>
+                  <span>•</span>
+                  <span>{selectedVideo.duration}</span>
+                  <span>•</span>
+                  <span>{selectedVideo.views} lượt xem</span>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
+
+            {/* Loading skeleton effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/5 to-transparent animate-shimmer pointer-events-none" />
+          </motion.div>
+        </motion.div>
       )}
     </>
   )
