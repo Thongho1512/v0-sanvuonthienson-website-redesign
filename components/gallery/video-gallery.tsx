@@ -62,21 +62,28 @@ export default function VideoGallery() {
 
   return (
     <>
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white" ref={ref}>
-        <div className="container mx-auto px-4">
+      <section className="py-20 bg-gradient-to-br from-gray-100 via-blue-100/50 to-indigo-100/50 relative overflow-hidden" ref={ref} id="videos">
+        {/* Decorative background elements */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/15 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-300/15 rounded-full blur-3xl" />
+        <div className="absolute inset-0 bg-pattern-dots opacity-[0.02]" />
+        
+        <div className="container mx-auto px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-100 text-red-600 font-medium mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 font-medium mb-4">
               <VideoIcon className="w-4 h-4" />
-              Video & Phối Cảnh 3D
+              Video Thi Công
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Video Thi Công & Phối Cảnh</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Video <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600">Thi Công & Thực Tế</span>
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Xem quy trình thi công thực tế và các mô hình 3D chân thực
+              Xem quy trình thi công thực tế các dự án đã hoàn thành
             </p>
           </motion.div>
 
@@ -90,7 +97,7 @@ export default function VideoGallery() {
                 className="group cursor-pointer"
                 onClick={() => setSelectedVideo(video)}
               >
-                <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-900 mb-4">
+                <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-800 mb-4 shadow-lg hover:shadow-2xl transition-all duration-300">
                   <div
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${video.thumbnail})` }}
@@ -99,8 +106,8 @@ export default function VideoGallery() {
 
                   {/* Play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <Play className="w-7 h-7 text-emerald-600 ml-1" fill="currentColor" />
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                      <Play className="w-7 h-7 text-white ml-1" fill="currentColor" />
                     </div>
                   </div>
 
@@ -111,10 +118,10 @@ export default function VideoGallery() {
                 </div>
 
                 <div className="space-y-2">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-emerald-100 text-emerald-700">
+                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
                     {video.category}
                   </span>
-                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-emerald-600 transition-colors line-clamp-2">
+                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                     {video.title}
                   </h3>
                   <p className="text-sm text-gray-500">{video.views} lượt xem</p>
@@ -125,7 +132,7 @@ export default function VideoGallery() {
         </div>
       </section>
 
-      {/* Video modal (placeholder - in production would use YouTube/Vimeo embed) */}
+      {/* Video modal - giữ nguyên */}
       {selectedVideo && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"

@@ -3,8 +3,7 @@
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import Image from "next/image"
 import { useState } from "react"
-import { Eye, X } from "lucide-react"
-
+import { Eye, X, Camera } from "lucide-react"
 const galleryImages = [
   {
     id: 1,
@@ -83,37 +82,27 @@ export default function ImageGallery() {
 
   return (
     <>
-      <section className="py-20 sm:py-24 bg-white relative overflow-hidden" ref={ref}>
-        <div className="absolute inset-0 bg-pattern-dots opacity-20" />
+      <section className="py-20 sm:py-24 bg-gradient-to-br from-white via-emerald-50/30 to-teal-50/50 relative overflow-hidden" ref={ref} id="images">
+        {/* Decorative background elements */}
+        <div className="absolute inset-0 bg-pattern-dots opacity-[0.02]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-300/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-teal-300/10 rounded-full blur-3xl" />
         
         <div className="container mx-auto px-4 relative z-10">
           <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-              Hình Ảnh <span className="text-emerald-600">Công Trình Thực Tế</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 font-medium mb-4">
+              <Camera className="w-4 h-4" />
+              Hình Ảnh Công Trình
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Hình Ảnh <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 via-teal-600 to-green-600">Công Trình Thực Tế</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Những dự án tiêu biểu đã được Thiên Sơn Landscape hoàn thành
             </p>
           </div>
 
-          {/* Category filter */}
-          <div className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`} style={{ transitionDelay: "200ms" }}>
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  selectedCategory === category
-                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 scale-105"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Gallery grid */}
+          
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredImages.map((image, index) => (
               <div
@@ -148,7 +137,7 @@ export default function ImageGallery() {
         </div>
       </section>
 
-      {/* Lightbox */}
+      {/* Lightbox - giữ nguyên */}
       {lightboxImage && (
         <div
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300"
