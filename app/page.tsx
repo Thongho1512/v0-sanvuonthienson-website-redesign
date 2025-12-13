@@ -1,7 +1,6 @@
 import Header from "@/components/layout/header"
 import Hero from "@/components/sections/hero"
 import AboutIntro from "@/components/sections/about-intro"
-import Services from "@/components/sections/services"
 import Projects from "@/components/sections/projects-showcase"
 import Stats from "@/components/sections/stats"
 import Reviews from "@/components/sections/reviews"
@@ -17,7 +16,6 @@ export default function Home() {
       <Header />
       <Hero />
       <AboutIntro />
-      <Services />
       <Projects />
       <Stats />
       <Reviews />

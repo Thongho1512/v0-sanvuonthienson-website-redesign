@@ -70,42 +70,6 @@ export default function HonNonBoCTA() {
             </p>
           </div>
 
-          {/* CTA Buttons */}
-          <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 transition-all duration-1000 delay-400 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>
-            <a
-              href="tel:0938386679"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-teal-600 to-cyan-600 text-white text-lg font-bold rounded-full hover:from-teal-700 hover:to-cyan-700 transition-all hover:scale-105 shadow-lg hover:shadow-teal-500/40"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-              </svg>
-              GỌI: 0938 386 679
-            </a>
-
-            <a
-              href="https://zalo.me/0938386679"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white text-lg font-bold rounded-full hover:from-blue-700 hover:to-teal-700 transition-all hover:scale-105 shadow-lg hover:shadow-blue-500/40"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 48 48">
-                <path d="M24 4C13.04 4 4 12.08 4 22.5c0 5.08 2.3 9.64 6 12.74v8.76l8.22-4.52c1.84.5 3.78.76 5.78.76 10.96 0 20-8.08 20-18.5S34.96 4 24 4zm10.5 24.9h-6.3v-6.3h-1.8v6.3h-6.3v1.8h6.3v6.3h1.8v-6.3h6.3v-1.8z"/>
-              </svg>
-              ZALO: 0938386679
-            </a>
-
-            <a
-              href="https://zalo.me/0938386679"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white text-lg font-bold rounded-full hover:from-cyan-700 hover:to-blue-700 transition-all hover:scale-105 shadow-lg hover:shadow-cyan-500/40"
-            >
-              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 48 48">
-                <path d="M24 4C13.04 4 4 12.08 4 22.5c0 5.08 2.3 9.64 6 12.74v8.76l8.22-4.52c1.84.5 3.78.76 5.78.76 10.96 0 20-8.08 20-18.5S34.96 4 24 4zm10.5 24.9h-6.3v-6.3h-1.8v6.3h-6.3v1.8h6.3v6.3h1.8v-6.3h6.3v-1.8z"/>
-              </svg>
-              ZALO: 0938386879
-            </a>
-          </div>
         </div>
       </div>
 
