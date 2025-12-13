@@ -2,7 +2,7 @@
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Card, CardContent } from "@/components/ui/card"
-import { Droplets, Mountain, Trees, Flower2, Home, Sparkles } from "lucide-react"
+import { Droplets, Mountain, Trees, Flower2, Home, Sparkles, ArrowRight } from "lucide-react"
 import Link from "next/link"
 
 const services = [

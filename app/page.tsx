@@ -1,9 +1,12 @@
 import Header from "@/components/layout/header"
 import Hero from "@/components/sections/hero"
+import AboutIntro from "@/components/sections/about-intro"
 import Services from "@/components/sections/services"
 import Projects from "@/components/sections/projects-showcase"
-import Reviews from "@/components/sections/reviews"
 import Stats from "@/components/sections/stats"
+import Reviews from "@/components/sections/reviews"
+import HonNonBoCTA from "@/components/sections/hon-non-bo-cta"
+import BlogSection from "@/components/sections/blog-section"
 import CTASection from "@/components/sections/cta-section"
 import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
@@ -13,10 +16,13 @@ export default function Home() {
     <main className="w-full overflow-x-hidden">
       <Header />
       <Hero />
+      <AboutIntro />
       <Services />
       <Projects />
       <Stats />
       <Reviews />
+      <HonNonBoCTA />
+      <BlogSection />
       <CTASection />
       <Footer />
       <FloatingContact />
