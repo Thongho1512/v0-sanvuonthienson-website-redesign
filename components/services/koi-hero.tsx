@@ -1,124 +1,109 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Droplets, Shield, Award } from "lucide-react"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function KoiHero() {
-  const { ref, isVisible } = useScrollAnimation()
+  const { ref, isVisible } = useScrollAnimation(0.2)
 
   return (
-    <section className="relative min-h-[85vh] flex items-center overflow-hidden">
-      {/* Background image with parallax */}
-      <div className="absolute inset-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url(/luxury-koi-pond-landscape-modern-design.jpg)",
-            transform: "scale(1.1)",
-          }}
+    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/90 via-emerald-800/70 to-emerald-900/85 z-10" />
+        <Image
+          src="/luxury-koi-pond-landscape-modern-design.jpg"
+          alt="Hồ cá Koi cao cấp"
+          fill
+          className="object-cover opacity-40 scale-110 animate-slow-zoom"
+          priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+        <div className="absolute inset-0 opacity-[0.015] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')] z-20" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10" ref={ref}>
-        <div className="max-w-3xl">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/30 text-emerald-300 font-medium mb-6">
-              <Droplets className="w-4 h-4" />
-              Chuyên Gia Hồ Cá Koi
-            </div>
-          </motion.div>
+      <div className="relative z-20 container mx-auto px-4 py-32 text-center">
+        <div className={`transition-all duration-1000 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 backdrop-blur-sm border border-emerald-500/30 text-emerald-300 font-medium mb-6 animate-slide-up">
+            <Droplets className="w-4 h-4" />
+            Chuyên Gia Hồ Cá Koi
+          </div>
 
-          <motion.h1
-            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 text-white text-balance leading-tight"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            Thi Công Hồ Cá Koi
-            <span className="block text-emerald-400">Đẳng Cấp & Bền Vững</span>
-          </motion.h1>
+          <h1 className="font-bold text-white mb-8 tracking-tighter">
+            <span className="block mb-3 animate-slide-up">Thi Công Hồ Cá Koi</span>
+            <span className="block mb-3 bg-gradient-to-r from-emerald-300 via-white to-emerald-300 bg-clip-text text-transparent animate-slide-up-delay-1">
+              Đẳng Cấp & Bền Vững
+            </span>
+          </h1>
 
-          <motion.p
-            className="text-xl md:text-2xl text-gray-200 mb-8 leading-relaxed text-pretty"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Thiết kế và thi công hồ cá Koi chuyên nghiệp, hợp phong thủy với hệ thống lọc nước hiện đại. Bảo hành dài
-            hạn, cam kết chất lượng.
-          </motion.p>
+          <p className="text-lg sm:text-xl md:text-2xl text-emerald-100/95 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay-2 px-4">
+            Thiết kế và thi công hồ cá Koi chuyên nghiệp, hợp phong thủy với hệ thống lọc nước hiện đại
+            <br />
+            <span className="text-base sm:text-lg text-emerald-200/75 block mt-3">
+              Bảo hành 5 năm · 200+ công trình hoàn thành
+            </span>
+          </p>
 
-          <motion.div
-            className="flex flex-wrap gap-4 mb-12"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          >
-            <Button
-              size="lg"
-              className="bg-emerald-600 hover:bg-emerald-700 text-white h-14 px-8 text-lg rounded-full shadow-xl shadow-emerald-600/30"
-              asChild
-            >
-              <Link href="/lien-he">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up-delay-3 mb-12">
+            <Link href="/lien-he">
+              <Button
+                size="lg"
+                className="bg-white text-emerald-900 hover:bg-emerald-100 px-8 py-6 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-white/20 hover:scale-105 active:scale-95 transition-all duration-300 font-semibold"
+              >
                 Tư Vấn Miễn Phí
-                <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-14 px-8 text-lg rounded-full border-2 border-white text-white hover:bg-white hover:text-emerald-600 bg-transparent"
-              asChild
-            >
-              <Link href="/thu-vien-cong-trinh">Xem Công Trình</Link>
-            </Button>
-          </motion.div>
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
 
-          {/* Features */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-          >
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+            <Link href="/thu-vien-cong-trinh">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-base sm:text-lg rounded-full backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 bg-transparent font-semibold"
+              >
+                Xem Công Trình
+              </Button>
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 card-hover">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
                 <Shield className="w-6 h-6 text-emerald-300" />
               </div>
-              <div>
+              <div className="text-left">
                 <h3 className="font-bold text-white mb-1">Bảo Hành 5 Năm</h3>
-                <p className="text-sm text-gray-300">Cam kết chất lượng dài hạn</p>
+                <p className="text-sm text-emerald-200">Cam kết chất lượng dài hạn</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 card-hover">
               <div className="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center flex-shrink-0">
                 <Droplets className="w-6 h-6 text-teal-300" />
               </div>
-              <div>
+              <div className="text-left">
                 <h3 className="font-bold text-white mb-1">Lọc Nước Hiện Đại</h3>
-                <p className="text-sm text-gray-300">Công nghệ Nhật Bản</p>
+                <p className="text-sm text-teal-200">Công nghệ Nhật Bản</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20">
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 card-hover">
               <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
                 <Award className="w-6 h-6 text-blue-300" />
               </div>
-              <div>
+              <div className="text-left">
                 <h3 className="font-bold text-white mb-1">15+ Năm Kinh Nghiệm</h3>
-                <p className="text-sm text-gray-300">200+ công trình hoàn thành</p>
+                <p className="text-sm text-blue-200">200+ công trình hoàn thành</p>
               </div>
             </div>
-          </motion.div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+          <div className="w-6 h-10 border-2 border-white/40 rounded-full flex justify-center pt-2">
+            <div className="w-1.5 h-3 bg-white/60 rounded-full animate-scroll-down" />
+          </div>
         </div>
       </div>
     </section>

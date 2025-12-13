@@ -1,6 +1,5 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import Image from "next/image"
 import { useState } from "react"
@@ -73,7 +72,7 @@ const galleryImages = [
 ]
 
 export default function ImageGallery() {
-  const { ref, isVisible } = useScrollAnimation()
+  const { ref, isVisible } = useScrollAnimation(0.2)
   const [selectedCategory, setSelectedCategory] = useState("Tất cả")
   const [lightboxImage, setLightboxImage] = useState<(typeof galleryImages)[0] | null>(null)
 
@@ -84,72 +83,66 @@ export default function ImageGallery() {
 
   return (
     <>
-      <section className="py-20 bg-white" ref={ref}>
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Hình Ảnh Công Trình Thực Tế</h2>
+      <section className="py-20 sm:py-24 bg-white relative overflow-hidden" ref={ref}>
+        <div className="absolute inset-0 bg-pattern-dots opacity-20" />
+        
+        <div className="container mx-auto px-4 relative z-10">
+          <div className={`text-center mb-12 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
+              Hình Ảnh <span className="text-emerald-600">Công Trình Thực Tế</span>
+            </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Những dự án tiêu biểu đã được Thiên Sơn Landscape hoàn thành
             </p>
-          </motion.div>
+          </div>
 
           {/* Category filter */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="flex flex-wrap justify-center gap-3 mb-12"
-          >
+          <div className={`flex flex-wrap justify-center gap-3 mb-12 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`} style={{ transitionDelay: "200ms" }}>
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                   selectedCategory === category
-                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30"
-                    : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    ? "bg-emerald-600 text-white shadow-lg shadow-emerald-600/30 scale-105"
+                    : "bg-gray-100 text-gray-700 hover:bg-gray-200 hover:scale-105"
                 }`}
               >
                 {category}
               </button>
             ))}
-          </motion.div>
+          </div>
 
           {/* Gallery grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredImages.map((image, index) => (
-              <motion.div
+              <div
                 key={image.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 cursor-pointer"
+                className={`group relative aspect-[4/3] rounded-2xl overflow-hidden bg-gray-100 cursor-pointer shadow-lg hover:shadow-2xl transition-all duration-700 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
                 onClick={() => setLightboxImage(image)}
               >
-                <Image
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
+                <div className="image-reveal h-full">
+                  <Image
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
                     <p className="text-sm font-medium text-emerald-300 mb-1">{image.category}</p>
                     <h3 className="text-xl font-bold">{image.title}</h3>
                   </div>
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                       <Eye className="w-8 h-8 text-white" />
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -158,7 +151,7 @@ export default function ImageGallery() {
       {/* Lightbox */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-in fade-in duration-300"
           onClick={() => setLightboxImage(null)}
         >
           <button

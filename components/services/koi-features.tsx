@@ -44,42 +44,40 @@ const features = [
 ]
 
 export default function KoiFeatures() {
-  const { ref, isVisible } = useScrollAnimation()
+  const { ref, isVisible } = useScrollAnimation(0.2)
 
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-gray-50" ref={ref}>
-      <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Tính Năng Vượt Trội</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+    <section className="py-20 sm:py-24 md:py-32 relative overflow-hidden" ref={ref}>
+      <div className="absolute inset-0 bg-pattern-dots opacity-40" />
+      <div className="absolute inset-0 bg-mesh-gradient" />
+
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className={`text-center mb-16 sm:mb-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+          <h2 className="font-bold text-foreground mb-6">
+            Tính Năng <span className="text-emerald-600">Vượt Trội</span>
+          </h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto px-4">
             Hồ cá Koi của chúng tôi được thiết kế với tiêu chuẩn cao nhất
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10">
           {features.map((feature, index) => {
             const Icon = feature.icon
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group p-8 rounded-2xl bg-white border border-gray-200 hover:border-emerald-300 hover:shadow-xl hover:shadow-emerald-100/50 transition-all duration-300"
+                className={`group h-full border-0 bg-white/80 backdrop-blur-sm shadow-lg hover:shadow-2xl hover:shadow-emerald-600/10 card-hover p-6 sm:p-8 rounded-2xl transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div
-                  className={`w-14 h-14 rounded-xl bg-${feature.color}-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}
-                >
-                  <Icon className={`w-7 h-7 text-${feature.color}-600`} />
+                <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                  <Icon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-              </motion.div>
+                <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-4 group-hover:text-emerald-600 transition-colors duration-300">
+                  {feature.title}
+                </h3>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{feature.description}</p>
+              </div>
             )
           })}
         </div>
