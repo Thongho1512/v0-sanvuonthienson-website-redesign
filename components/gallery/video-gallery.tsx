@@ -64,7 +64,7 @@ export default function VideoGallery() {
   return (
     <>
       <section 
-        className="py-20 bg-gradient-to-br from-gray-100 via-blue-100/50 to-indigo-100/50 relative overflow-hidden" 
+        className="py-20 bg-violet-200 relative overflow-hidden" 
         ref={ref} 
         id="videos"
       >

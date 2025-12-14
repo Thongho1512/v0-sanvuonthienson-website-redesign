@@ -35,13 +35,14 @@ export default function Hero() {
           }`}
         >
           {/* Logo - TRANSPARENT VERSION với kích thước hợp lý */}
+          {/* Logo - TRANSPARENT VERSION - NO HOVER EFFECTS */}
           <div className="mb-8 sm:mb-10 md:mb-12 flex justify-center">
-            <div className="relative group">
-              {/* Glow effect - mạnh hơn vì không có nền trắng */}
-              <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-emerald-400/40 via-teal-400/30 to-cyan-400/40 rounded-3xl blur-xl sm:blur-2xl group-hover:blur-2xl sm:group-hover:blur-3xl opacity-60 group-hover:opacity-100 transition-all duration-500 animate-pulse" />
+            <div className="relative">
+              {/* Static glow effect - không có animation */}
+              <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-emerald-400/30 via-teal-400/20 to-cyan-400/30 rounded-3xl blur-xl sm:blur-2xl opacity-50" />
               
-              {/* Logo container - không cần bg-white */}
-              <div className="relative px-4 sm:px-6 py-3 sm:py-4 group-hover:scale-105 sm:group-hover:scale-110 transition-all duration-500">
+              {/* Logo container - không có hover effects */}
+              <div className="relative px-4 sm:px-6 py-3 sm:py-4">
                 <Image
                   src="/logo-removebg-preview.png"
                   alt="Thiên Sơn Landscape"
@@ -51,9 +52,6 @@ export default function Hero() {
                   priority
                 />
               </div>
-              
-              {/* Decorative shine effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             </div>
           </div>
 

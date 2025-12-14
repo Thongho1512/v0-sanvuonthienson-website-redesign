@@ -41,21 +41,7 @@ export default function AboutIntro() {
           <div className="w-full order-2 lg:order-1">
             <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
               {/* Logo Icon */}
-              <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-white rounded-full shadow-lg flex items-center justify-center flex-shrink-0">
-                <svg viewBox="0 0 100 100" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14">
-                  <path
-                    d="M50 20 C30 25, 25 40, 30 55 C35 70, 45 75, 50 80 C55 75, 65 70, 70 55 C75 40, 70 25, 50 20 Z"
-                    fill="#ff6b6b"
-                    opacity="0.8"
-                  />
-                  <circle cx="45" cy="35" r="2" fill="white" />
-                  <path
-                    d="M30 30 C25 35, 25 45, 30 50 C35 55, 45 55, 50 50"
-                    fill="#ff8787"
-                    opacity="0.6"
-                  />
-                </svg>
-              </div>
+              
 
               <div>
                 <h3 className="text-xl sm:text-2xl font-bold text-gray-900">THIÊN SƠN KOI</h3>
@@ -84,16 +70,16 @@ export default function AboutIntro() {
             </div>
           </div>
 
-          {/* Right: Static Koi Fish Image - optimized for mobile */}
+          {/* Right: Koi Fish Image - NO background, tight fit */}
           <div className="w-full order-1 lg:order-2">
             <div className="relative aspect-square max-w-sm sm:max-w-md lg:max-w-lg mx-auto">
-              {/* Koi Fish Image */}
-              <div className="relative w-full h-full rounded-3xl overflow-hidden shadow-2xl">
+              {/* Koi Fish Image - Container khít với ảnh */}
+              <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="/luxury-koi-pond-landscape-modern-design.png"
                   alt="Cá Koi đẹp - Thiên Sơn Landscape"
                   fill
-                  className="object-cover"
+                  className="object-contain drop-shadow-2xl"
                   priority
                   sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 40vw"
                 />
