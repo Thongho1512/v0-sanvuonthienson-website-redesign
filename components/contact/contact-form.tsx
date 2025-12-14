@@ -39,10 +39,10 @@ export default function ContactForm() {
         initial={{ opacity: 0, y: 30 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
-        className="p-8 rounded-2xl bg-white border border-gray-200 shadow-lg"
+        className="p-6 sm:p-8 rounded-2xl bg-white border border-gray-200 shadow-lg"
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Gửi Yêu Cầu Tư Vấn</h2>
-        <p className="text-gray-600 mb-8">Điền thông tin bên dưới, chúng tôi sẽ liên hệ trong 30 phút</p>
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2">Gửi Yêu Cầu Tư Vấn</h2>
+        <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">Điền thông tin bên dưới, chúng tôi sẽ liên hệ trong 30 phút</p>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <motion.div
