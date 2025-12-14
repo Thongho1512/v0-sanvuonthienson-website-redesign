@@ -33,20 +33,17 @@ export default function Header() {
         scrolled ? "bg-white/95 backdrop-blur-md shadow-lg" : "bg-white/80 backdrop-blur-sm"
       }`}
     >
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3" title="Thiên Sơn Landscape">
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4 flex items-center justify-between">
+        {/* Logo - CHỈ HÌNH ẢNH, KHÔNG TEXT */}
+        <Link href="/" className="flex items-center" title="Thiên Sơn Landscape">
           <Image
-            src="/logo.png"
+            src="/logo-removebg-preview.png"
             alt="Thiên Sơn Landscape"
-            width={50}
-            height={50}
-            className="w-12 h-12 object-contain"
+            width={160}
+            height={64}
+            className="h-12 sm:h-14 md:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"
+            priority
           />
-          <div className="hidden sm:block">
-            <div className="font-bold text-xl text-foreground">Thiên Sơn</div>
-            <div className="text-xs text-muted-foreground">Landscape</div>
-          </div>
         </Link>
 
         {/* Desktop Menu */}

@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Company Info */}
           <div>
             <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo.png" alt="Thiên Sơn" width={48} height={48} className="w-12 h-12 brightness-0 invert" />
+              <Image src="/logo-removebg-preview.png" alt="Thiên Sơn" width={48} height={48} className="w-12 h-12 brightness-0 invert" />
               <div>
                 <div className="font-bold text-xl">Thiên Sơn</div>
                 <div className="text-sm text-background/70">Landscape</div>

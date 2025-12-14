@@ -13,10 +13,7 @@ export default function Hero() {
     <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Layer */}
       <div className="absolute inset-0 z-0">
-        {/* Gradient overlay - Mạnh mẽ và sâu hơn */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/95 via-teal-900/90 to-emerald-950/95 z-10" />
-        
-        {/* Hero Image */}
         <Image
           src="/luxury-koi-pond-landscape-modern-design.jpg"
           alt="Hồ cá Koi cao cấp"
@@ -24,14 +21,8 @@ export default function Hero() {
           className="object-cover opacity-40 scale-110 animate-slow-zoom"
           priority
         />
-        
-        {/* Texture Pattern */}
         <div className="absolute inset-0 opacity-[0.03] bg-pattern-dots z-20" />
-        
-        {/* Vignette Effect */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] z-20" />
-        
-        {/* Animated Light Spots */}
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse z-5" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl animate-pulse z-5" style={{ animationDelay: '1s' }} />
       </div>
@@ -43,18 +34,26 @@ export default function Hero() {
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >
-          {/* Logo */}
-          <div className="mb-12 flex justify-center">
-            <div className="relative">
-              <Image
-                src="/logo.png"
-                alt="Thiên Sơn Landscape"
-                width={280}
-                height={112}
-                className="animate-fade-in w-auto h-24 sm:h-28 drop-shadow-2xl"
-              />
-              {/* Glow effect under logo */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-emerald-400/30 blur-2xl rounded-full" />
+          {/* Logo - TRANSPARENT VERSION với kích thước hợp lý */}
+          <div className="mb-8 sm:mb-10 md:mb-12 flex justify-center">
+            <div className="relative group">
+              {/* Glow effect - mạnh hơn vì không có nền trắng */}
+              <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-br from-emerald-400/40 via-teal-400/30 to-cyan-400/40 rounded-3xl blur-xl sm:blur-2xl group-hover:blur-2xl sm:group-hover:blur-3xl opacity-60 group-hover:opacity-100 transition-all duration-500 animate-pulse" />
+              
+              {/* Logo container - không cần bg-white */}
+              <div className="relative px-4 sm:px-6 py-3 sm:py-4 group-hover:scale-105 sm:group-hover:scale-110 transition-all duration-500">
+                <Image
+                  src="/logo-removebg-preview.png"
+                  alt="Thiên Sơn Landscape"
+                  width={280}
+                  height={112}
+                  className="w-auto h-16 sm:h-20 md:h-24 lg:h-28 object-contain drop-shadow-2xl"
+                  priority
+                />
+              </div>
+              
+              {/* Decorative shine effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
             </div>
           </div>
 
