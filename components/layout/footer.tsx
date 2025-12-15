@@ -16,8 +16,11 @@ export default function Footer() {
                 <div className="text-sm text-background/70">Landscape</div>
               </div>
             </div>
-            <p className="text-background/80 leading-relaxed">
-              Đơn vị thiết kế và thi công hồ cá Koi, hòn non bộ, cảnh quan sân vườn chuyên nghiệp tại Huế.
+            <p className="text-background/80 leading-relaxed mb-4">
+              Công ty TNHH Sân Vườn Thiên Sơn
+            </p>
+            <p className="text-background/80 leading-relaxed text-sm">
+              Đơn vị thiết kế và thi công hồ cá Koi, hòn non bộ, cảnh quan sân vườn chuyên nghiệp.
             </p>
           </div>
 
@@ -55,33 +58,39 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <Phone size={18} className="mt-1 flex-shrink-0" />
                 <div>
-                  <a href="tel:0938386679" className="text-background/80 hover:text-primary transition-colors">
-                    0938 386 679
+                  <p className="text-background/70 text-sm mb-1">Hotline</p>
+                  <a href="tel:0938386679" className="text-background/90 hover:text-primary transition-colors font-semibold">
+                    0938 38 66 79
                   </a>
                 </div>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
-                <span className="text-background/80">Huế, Thừa Thiên Huế</span>
+                <div>
+                  <p className="text-background/70 text-sm mb-1">Trụ Sở</p>
+                  <span className="text-background/90 text-sm">178/19/33 Trương Thị Hoa, P.19, P.Tân Thới Hiệp, Q12, TP.HCM</span>
+                </div>
               </li>
             </ul>
           </div>
 
-          {/* Working Hours */}
+          {/* Branches */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Giờ Làm Việc</h3>
-            <ul className="space-y-2 text-background/80">
-              <li>Thứ 2 - Thứ 7: 7:00 - 18:00</li>
-              <li>Chủ Nhật: 8:00 - 17:00</li>
-              <li className="pt-2 text-primary font-semibold">Tư vấn 24/7 qua Zalo</li>
+            <h3 className="font-bold text-lg mb-4">Cơ Sở</h3>
+            <ul className="space-y-3 text-background/80 text-sm">
+              <li>
+                <p className="font-semibold text-background/90 mb-1">Cơ Sở 1</p>
+                <p className="leading-relaxed">315 Hùng Vương, TT Ngãi Giao, Châu Đức – Bà Rịa – Vũng Tàu</p>
+              </li>
+              <li>
+                <p className="font-semibold text-background/90 mb-1">Cơ Sở 2</p>
+                <p className="leading-relaxed">Phonghenh, Campuchia</p>
+              </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-background/20 pt-8 text-center text-background/70 text-sm">
-          <p>&copy; {new Date().getFullYear()} Thiên Sơn Landscape. Tất cả quyền được bảo lưu.</p>
-        </div>
+        
       </div>
     </footer>
   )

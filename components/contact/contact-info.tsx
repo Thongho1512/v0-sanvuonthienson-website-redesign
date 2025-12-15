@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Mail, Clock, MessageCircle, Home } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function ContactInfo() {
@@ -10,37 +10,48 @@ export default function ContactInfo() {
 
   const contactItems = [
     {
-      icon: MapPin,
-      title: "Địa Chỉ",
-      content: "Phú Bài, Thành phố Huế, Tỉnh Thừa Thiên Huế",
+      icon: Home,
+      title: "Công Ty",
+      content: "CÔNG TY TNHH SÂN VƯỜN THIÊN SƠN",
       color: "emerald",
     },
     {
-      icon: Phone,
-      title: "Số Điện Thoại",
-      content: "0938 386 679",
-      action: "tel:0938386679",
+      icon: MapPin,
+      title: "Địa Chỉ Trụ Sở",
+      content: "178/19/33 Trương Thị Hoa, P.19, P.Tân Thới Hiệp, Q12, Tp. Hồ Chí Minh",
+      color: "emerald",
+    },
+    {
+      icon: MapPin,
+      title: "Cơ Sở 1",
+      content: "Trang Trí Sân Vườn Thiên Sơn: 315 Hùng Vương, TT Ngãi Giao, Châu Đức – Bà Rịa – Vũng Tàu",
+      color: "teal",
+    },
+    {
+      icon: MapPin,
+      title: "Cơ Sở 2",
+      content: "Trang Trí Sân Vườn Thiên Sơn: Phonghenh, Campuchia",
       color: "blue",
     },
     {
-      icon: Mail,
-      title: "Email",
-      content: "sanvuonthienson@gmail.com",
-      action: "mailto:sanvuonthienson@gmail.com",
-      color: "purple",
+      icon: Phone,
+      title: "Hotline",
+      content: "0938 38 66 79",
+      action: "tel:0938386679",
+      color: "green",
+    },
+    {
+      icon: MessageCircle,
+      title: "Zalo",
+      content: "0938 38 66 79",
+      action: "https://zalo.me/0938386679",
+      color: "blue",
     },
     {
       icon: Clock,
       title: "Giờ Làm Việc",
       content: "Thứ 2 - Chủ Nhật: 7:00 - 21:00",
       color: "orange",
-    },
-    {
-      icon: MessageCircle,
-      title: "Zalo",
-      content: "0938 386 679",
-      action: "https://zalo.me/0938386679",
-      color: "teal",
     },
   ]
 
@@ -52,9 +63,9 @@ export default function ContactInfo() {
         transition={{ duration: 0.8 }}
       >
         <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Thông Tin Liên Hệ</h2>
-        <p className="text-lg text-gray-600 leading-relaxed">
-          Chúng tôi luôn sẵn sàng lắng nghe và tư vấn cho bạn về các dự án cảnh quan, hồ cá Koi và hòn non bộ. Hãy liên
-          hệ qua các kênh dưới đây để được hỗ trợ nhanh nhất.
+        <p className="text-lg text-gray-600 leading-relaxed mb-6">
+          Công ty TNHH Sân Vườn Thiên Sơn - Chuyên thiết kế và thi công hồ cá Koi, hòn non bộ, 
+          cảnh quan sân vườn chuyên nghiệp. Chúng tôi luôn sẵn sàng lắng nghe và tư vấn cho bạn.
         </p>
       </motion.div>
 
@@ -95,7 +106,7 @@ export default function ContactInfo() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{item.title}</h3>
-                    <p className="text-gray-600">{item.content}</p>
+                    <p className="text-gray-600 leading-relaxed">{item.content}</p>
                   </div>
                 </div>
               )}
@@ -107,7 +118,7 @@ export default function ContactInfo() {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        transition={{ duration: 0.6, delay: 0.7 }}
         className="p-8 rounded-2xl bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-200"
       >
         <h3 className="text-xl font-bold text-gray-900 mb-3">Cam Kết Của Chúng Tôi</h3>
@@ -128,13 +139,17 @@ export default function ContactInfo() {
             <div className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
             15+ năm kinh nghiệm, 200+ công trình
           </li>
+          <li className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+            Đội ngũ thợ lành nghề, tay nghề cao
+          </li>
         </ul>
       </motion.div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isVisible ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.6, delay: 0.7 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
         className="flex gap-4"
       >
         <Button size="lg" className="flex-1 bg-emerald-600 hover:bg-emerald-700 h-14 text-lg rounded-full" asChild>

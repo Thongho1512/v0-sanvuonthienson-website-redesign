@@ -3,7 +3,7 @@
 export default function FloatingContact() {
   return (
     <div className="floating-contact">
-      {/* Zalo Button */}
+      {/* Zalo Button with Official Logo */}
       <a
         href="https://zalo.me/0938386679"
         target="_blank"
@@ -11,9 +11,11 @@ export default function FloatingContact() {
         className="contact-btn bg-[#0068FF] hover:bg-[#0052CC]"
         title="Chat Zalo"
       >
-        <svg className="w-7 h-7" viewBox="0 0 48 48" fill="currentColor">
-          <path d="M24 4C13.04 4 4 12.08 4 22.5c0 5.08 2.3 9.64 6 12.74v8.76l8.22-4.52c1.84.5 3.78.76 5.78.76 10.96 0 20-8.08 20-18.5S34.96 4 24 4zm10.5 24.9h-6.3v-6.3h-1.8v6.3h-6.3v1.8h6.3v6.3h1.8v-6.3h6.3v-1.8z" />
-        </svg>
+        <img 
+          src="/zalo-logo.png" 
+          alt="Zalo" 
+          className="w-7 h-7"
+        />
       </a>
 
       {/* Phone Button */}

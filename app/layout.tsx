@@ -11,12 +11,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sanvuonthienson.com"),
   title: "Thiên Sơn Landscape - Thiết Kế Hồ Cá Koi, Hòn Non Bộ Chuyên Nghiệp",
   description:
-    "Thiên Sơn Landscape - Đơn vị thiết kế và thi công hồ cá Koi, hòn non bộ, tiểu cảnh sân vườn chuyên nghiệp tại Huế. Hơn 15 năm kinh nghiệm, 200+ công trình hoàn thành. Tư vấn miễn phí, phong thủy hợp lý.",
+    "Công ty TNHH Sân Vườn Thiên Sơn - Chuyên thiết kế và thi công hồ cá Koi, hòn non bộ, tiểu cảnh sân vườn chuyên nghiệp. Hơn 15 năm kinh nghiệm, 200+ công trình hoàn thành. Hotline: 0938 38 66 79",
   keywords: [
     "thiết kế hồ cá koi",
     "thi công hồ cá koi",
     "hòn non bộ",
-    "hòn non bộ Huế",
     "tiểu cảnh sân vườn",
     "cảnh quan sân vườn",
     "thiết kế cảnh quan",
@@ -24,10 +23,12 @@ export const metadata: Metadata = {
     "sân vườn đẹp",
     "phong thủy hòn non bộ",
     "cafe cá koi",
+    "thiên sơn landscape",
+    "sân vườn thiên sơn",
   ],
-  authors: [{ name: "Thiên Sơn Landscape" }],
-  creator: "Thiên Sơn Landscape",
-  publisher: "Thiên Sơn Landscape",
+  authors: [{ name: "Công ty TNHH Sân Vườn Thiên Sơn" }],
+  creator: "Công ty TNHH Sân Vườn Thiên Sơn",
+  publisher: "Công ty TNHH Sân Vườn Thiên Sơn",
   formatDetection: { telephone: true },
   openGraph: {
     type: "website",
@@ -35,13 +36,13 @@ export const metadata: Metadata = {
     url: "https://sanvuonthienson.com",
     title: "Thiên Sơn Landscape - Thiết Kế Hồ Cá Koi & Hòn Non Bộ",
     description:
-      "Thiết kế và thi công hồ cá Koi, hòn non bộ, tiểu cảnh sân vườn chuyên nghiệp. Hơn 15 năm kinh nghiệm.",
+      "Công ty TNHH Sân Vườn Thiên Sơn - Thiết kế và thi công hồ cá Koi, hòn non bộ, tiểu cảnh sân vườn chuyên nghiệp. Hơn 15 năm kinh nghiệm.",
     siteName: "Thiên Sơn Landscape",
   },
   twitter: {
     card: "summary_large_image",
     title: "Thiên Sơn Landscape - Thiết Kế Hồ Cá Koi",
-    description: "Thiết kế hồ cá Koi, hòn non bộ, sân vườn chuyên nghiệp tại Huế",
+    description: "Thiết kế hồ cá Koi, hòn non bộ, sân vườn chuyên nghiệp",
   },
   robots: {
     index: true,
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
       vi: "https://sanvuonthienson.com",
     },
   },
-    generator: 'v0.app'
+  generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -71,7 +72,7 @@ export default function RootLayout({
   return (
     <html lang="vi" suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#3d7d4a" />
+        <meta name="theme-color" content="#059669" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
@@ -86,22 +87,32 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              name: "Thiên Sơn Landscape",
+              name: "Công ty TNHH Sân Vườn Thiên Sơn",
               image: "https://sanvuonthienson.com/logo.png",
               description: "Công ty thiết kế và thi công hồ cá Koi, hòn non bộ, tiểu cảnh sân vườn chuyên nghiệp",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "Huế",
-                addressLocality: "Huế",
-                addressRegion: "Thừa Thiên Huế",
+                streetAddress: "178/19/33 Trương Thị Hoa, P.19, P.Tân Thới Hiệp, Q12",
+                addressLocality: "Thành phố Hồ Chí Minh",
+                addressRegion: "TP.HCM",
                 addressCountry: "VN",
               },
               telephone: "+84938386679",
               url: "https://sanvuonthienson.com",
-              areaServed: {
-                "@type": "Country",
-                name: "VN",
-              },
+              areaServed: [
+                {
+                  "@type": "Place",
+                  name: "Việt Nam",
+                },
+                {
+                  "@type": "Place",
+                  name: "TP. Hồ Chí Minh",
+                },
+                {
+                  "@type": "Place",
+                  name: "Bà Rịa - Vũng Tàu",
+                },
+              ],
               priceRange: "$$-$$$",
               aggregateRating: {
                 "@type": "AggregateRating",
@@ -109,6 +120,7 @@ export default function RootLayout({
                 ratingCount: "200",
               },
               sameAs: ["https://zalo.me/0938386679"],
+              openingHours: "Mo-Su 07:00-21:00",
             }),
           }}
         />
