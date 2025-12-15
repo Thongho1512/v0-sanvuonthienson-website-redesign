@@ -9,6 +9,7 @@ import BlogSection from "@/components/sections/blog-section"
 import CTASection from "@/components/sections/cta-section"
 import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
+import Services from "@/components/sections/services"
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <Hero />
       <AboutIntro />
+      <Services />  
       <Projects />
       <Stats />
       <Reviews />

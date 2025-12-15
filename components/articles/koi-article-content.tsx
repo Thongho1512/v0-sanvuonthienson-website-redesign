@@ -306,7 +306,6 @@ export default function KoiArticleContent() {
             </div>
             </section>
 
-        // Phần này thêm vào cuối file koi-article-content.tsx, sau Section 3
 
             {/* Section 4: Cam kết */}
             <section className="mb-12">
@@ -411,47 +410,7 @@ export default function KoiArticleContent() {
             </div>
             </section>
 
-            {/* CTA Section */}
-            <section className="mb-12">
-            <div className="bg-gradient-to-br from-emerald-600 via-teal-600 to-emerald-700 rounded-3xl p-12 text-center text-white">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                Tư Vấn Với Nghệ Nhân
-                </h2>
-                
-                <p className="text-xl mb-8 max-w-2xl mx-auto">
-                Liên hệ ngay để được tư vấn miễn phí và nhận báo giá chi tiết cho dự án hồ cá Koi của bạn
-                </p>
-
-                <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-                <a 
-                    href="tel:0938386679"
-                    className="px-8 py-4 bg-white text-emerald-600 font-bold rounded-full hover:bg-emerald-50 transition-all hover:scale-105 shadow-xl flex items-center gap-2"
-                >
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
-                    </svg>
-                    Gọi: 0938 386 679
-                </a>
-
-                <a 
-                    href="https://zalo.me/0938386679"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="px-8 py-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-600 transition-all hover:scale-105 shadow-xl flex items-center gap-2"
-                >
-                    <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 48 48">
-                    <path d="M24 4C13.04 4 4 12.08 4 22.5c0 5.08 2.3 9.64 6 12.74v8.76l8.22-4.52c1.84.5 3.78.76 5.78.76 10.96 0 20-8.08 20-18.5S34.96 4 24 4zm10.5 24.9h-6.3v-6.3h-1.8v6.3h-6.3v1.8h6.3v6.3h1.8v-6.3h6.3v-1.8z"/>
-                    </svg>
-                    Zalo: 0938 386 679
-                </a>
-                </div>
-
-                <p className="text-emerald-100">
-                Thời gian làm việc: Thứ 2 - Chủ Nhật | 7:00 - 21:00
-                </p>
-            </div>
-            </section>
-
+            
 
 
         </div>

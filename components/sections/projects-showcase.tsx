@@ -9,66 +9,58 @@ const projects = [
   {
     id: 1,
     title: 'Thi Công Hồ Cá Koi',
-    category: 'Hồ Cá Koi',
     image: '/luxury-koi-pond-landscape-modern-design.jpg',
     description: 'Thiết kế và thi công hồ cá Koi chuyên nghiệp với hệ thống lọc hiện đại',
     link: '/bai-viet/thi-cong-ho-ca-koi'
   },
   {
     id: 2,
-    title: 'Thi Công Hòn Non Bộ',
-    category: 'Hòn Non Bộ',
+    title: 'Những thiết kế tiểu cảnh sân vườn độc đáo',
     image: '/traditional-vietnamese-rock-garden-landscape.jpg',
     description: 'Nghệ thuật hòn non bộ truyền thống Việt Nam',
-    link: '/bai-viet/thi-cong-hon-non-bo'
+    link: '/bai-viet/nhung-thiet-ke-tieu-canh-san-vuon-doc-dao'
   },
   {
     id: 3,
-    title: 'Thiết Kế Sân Vườn Hiện Đại',
-    category: 'Sân Vườn',
+    title: 'Những hình ảnh tiểu cảnh cầu thang đẹp, độc đáo',
     image: '/modern-minimalist-garden-landscape-design.jpg',
     description: 'Không gian sân vườn tối giản, hiện đại',
-    link: '/bai-viet/san-vuon-hien-dai'
+    link: '/bai-viet/nhung-hinh-anh-tieu-canh-cau-thang-dep-doc-dao'
   },
   {
     id: 4,
-    title: 'Hồ Koi Biệt Thự Cao Cấp',
-    category: 'Hồ Cá Koi',
+    title: 'Thi công hòn non bộ đẹp hợp phong thủy giá rẻ nhất',
     image: '/luxury-modern-koi-pond-villa-landscape.jpg',
     description: 'Hồ cá Koi đẳng cấp cho biệt thự',
-    link: '/bai-viet/ho-koi-biet-thu'
+    link: '/bai-viet/thi-cong-hon-non-bo-dep-hop-phong-thuy-gia-re-nhat'
   },
   {
     id: 5,
-    title: 'Tiểu Cảnh Cầu Thang',
-    category: 'Tiểu Cảnh',
+    title: 'Hòn non bộ thác nước và những lưu ý quan trọng',
     image: '/modern-minimalist-garden-landscape-design.jpg',
     description: 'Tiểu cảnh độc đáo bên cầu thang',
-    link: '/bai-viet/tieu-canh-cau-thang'
+    link: '/bai-viet/hon-non-bo-thac-nuoc-va-nhung-luu-y-quan-trong'
   },
   {
     id: 6,
-    title: 'Hòn Non Bộ Thác Nước',
-    category: 'Hòn Non Bộ',
+    title: 'Lưu ý quan trọng khi thiết kế hòn non bộ cho người mệnh thủy',
     image: '/traditional-vietnamese-rock-garden-landscape.jpg',
     description: 'Hòn non bộ kết hợp thác nước tự nhiên',
-    link: '/bai-viet/hon-non-bo-thac-nuoc'
+    link: '/bai-viet/luu-y-quan-trong-khi-thiet-ke-hon-non-bo-cho-nguoi-menh-thuy'
   },
   {
     id: 7,
-    title: 'Cafe Sân Vườn Koi',
-    category: 'Cafe',
+    title: 'Thi công hòn non bộ phong thủy',
     image: '/luxury-koi-pond-landscape-modern-design.jpg',
     description: 'Thiết kế quán cafe với hồ cá Koi',
-    link: '/bai-viet/cafe-san-vuon'
+    link: '/bai-viet/thi-cong-hon-non-bo-phong-thuy'
   },
   {
     id: 8,
-    title: 'Resort Cảnh Quan',
-    category: 'Resort',
+    title: 'Cách thiết kế, bố trí cảnh quan sân vườn đẹp',
     image: '/luxury-modern-koi-pond-villa-landscape.jpg',
     description: 'Cảnh quan tổng thể cho resort cao cấp',
-    link: '/bai-viet/canh-quan-resort'
+    link: '/bai-viet/cach-thiet-ke-bo-tri-canh-quan-san-vuon-dep'
   }
 ]
 
@@ -144,9 +136,7 @@ function ProjectCard({
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
       <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-        <span className="inline-block px-4 py-1.5 bg-primary/90 backdrop-blur-sm text-white text-sm font-semibold rounded-full mb-3 w-fit">
-          {project.category}
-        </span>
+        
         <h3 className="text-2xl font-bold text-white tracking-tight mb-2">
           {project.title}
         </h3>
