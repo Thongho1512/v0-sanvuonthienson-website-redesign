@@ -134,7 +134,7 @@ export default function HonNonBoPhongThuyArticleContent() {
 
             <div className="bg-amber-50 border-2 border-amber-200 rounded-2xl p-8 mt-8">
               <p className="text-gray-800 leading-relaxed text-lg text-center font-medium">
-                Với hơn 10 năm trong nghề, <strong className="text-amber-700">Thiên Sơn</strong> luôn mong muốn mang đến 
+                Với hơn 15 năm trong nghề, <strong className="text-amber-700">Thiên Sơn</strong> luôn mong muốn mang đến 
                 một hòn non bộ ý nghĩa, phù hợp với phong thủy nhằm kích hoạt tài lộc, tài vận cho ngôi nhà/công ty của bạn.
               </p>
             </div>
@@ -363,7 +363,7 @@ export default function HonNonBoPhongThuyArticleContent() {
                 <div>
                   <h3 className="text-xl font-bold text-amber-900 mb-4">Kinh Nghiệm & Chuyên Môn</h3>
                   <p className="text-gray-700 leading-relaxed">
-                    Hơn 10 năm trong nghề, Thiên Sơn với con mắt nhà nghề từ nghệ nhân Huế cùng sự tinh tế, 
+                    Hơn 15 năm trong nghề, Thiên Sơn với con mắt nhà nghề từ nghệ nhân Huế cùng sự tinh tế, 
                     am hiểu phong thủy hòn non bộ cùng luật phong thủy, ngũ hành sẽ kích hoạt tài lộc đến cho gia đình, 
                     cơ quan của bạn.
                   </p>

@@ -7,7 +7,7 @@ import HonNonBoPhongThuyArticleContent from "@/components/articles/hon-non-bo-ph
 export const metadata: Metadata = {
   title: "Thi Công Hòn Non Bộ Đẹp Hợp Phong Thủy Giá Rẻ Nhất | Thiên Sơn Landscape",
   description:
-    "Thi công hòn non bộ đẹp hợp phong thủy với hơn 10 năm kinh nghiệm. Kết hợp đá, nước, đạo và thảo mang lại tài lộc, sự hòa hợp cho gia đình bạn.",
+    "Thi công hòn non bộ đẹp hợp phong thủy với hơn 15 năm kinh nghiệm. Kết hợp đá, nước, đạo và thảo mang lại tài lộc, sự hòa hợp cho gia đình bạn.",
   keywords: [
     "thi công hòn non bộ",
     "hòn non bộ đẹp",

@@ -437,7 +437,7 @@ export default function MenhThuyArticleContent() {
                   <div>
                     <h4 className="text-xl font-bold mb-2">Nghệ Nhân LÊ ANH</h4>
                     <p className="text-emerald-100 leading-relaxed">
-                      Hơn 10 năm trong nghề sẵn sàng tư vấn, hỗ trợ các bạn
+                      Hơn 15 năm trong nghề sẵn sàng tư vấn, hỗ trợ các bạn
                     </p>
                   </div>
                 </div>

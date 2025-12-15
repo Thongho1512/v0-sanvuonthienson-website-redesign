@@ -50,7 +50,7 @@ export default function Header() {
           <Link href="/" className="flex items-center z-50">
             <Image
               src="/logo-removebg-preview.png"
-              alt="Thiên Sơn Landscape"
+              alt="Thiên Sơn Koi"
               width={160}
               height={64}
               className="h-12 sm:h-14 md:h-16 w-auto object-contain hover:scale-105 transition-transform duration-300"

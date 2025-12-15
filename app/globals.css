@@ -502,3 +502,43 @@
 .animate-shimmer {
   animation: shimmer 2s infinite;
 }
+
+/* Tối ưu scroll performance */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration cho animated elements */
+.animate-slide-up,
+.animate-slide-up-delay-1,
+.animate-slide-up-delay-2,
+.animate-slide-up-delay-3,
+.animate-bounce,
+.animate-slow-zoom {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Reduce motion cho users với accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Smooth scroll với hardware acceleration */
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}

@@ -1,29 +1,74 @@
+import { Suspense, lazy } from "react"
 import Header from "@/components/layout/header"
 import Hero from "@/components/sections/hero"
-import AboutIntro from "@/components/sections/about-intro"
-import Projects from "@/components/sections/projects-showcase"
-import Stats from "@/components/sections/stats"
-import Reviews from "@/components/sections/reviews"
-import HonNonBoCTA from "@/components/sections/hon-non-bo-cta"
-import BlogSection from "@/components/sections/blog-section"
-import CTASection from "@/components/sections/cta-section"
 import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
-import Services from "@/components/sections/services"
+
+// Lazy load các components không cần thiết cho first paint
+const AboutIntro = lazy(() => import("@/components/sections/about-intro"))
+const Services = lazy(() => import("@/components/sections/services"))
+const Projects = lazy(() => import("@/components/sections/projects-showcase"))
+const Stats = lazy(() => import("@/components/sections/stats"))
+const Reviews = lazy(() => import("@/components/sections/reviews"))
+const HonNonBoCTA = lazy(() => import("@/components/sections/hon-non-bo-cta"))
+const BlogSection = lazy(() => import("@/components/sections/blog-section"))
+const CTASection = lazy(() => import("@/components/sections/cta-section"))
+
+// Loading skeleton component
+function SectionSkeleton() {
+  return (
+    <div className="py-20 animate-pulse">
+      <div className="container mx-auto px-4">
+        <div className="h-8 bg-gray-200 rounded w-1/3 mx-auto mb-4"></div>
+        <div className="h-4 bg-gray-200 rounded w-1/2 mx-auto mb-8"></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {[1, 2, 3].map((i) => (
+            <div key={i} className="h-64 bg-gray-200 rounded-xl"></div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function Home() {
   return (
     <main className="w-full overflow-x-hidden">
       <Header />
       <Hero />
-      <AboutIntro />
-      <Services />  
-      <Projects />
-      <Stats />
-      <Reviews />
-      <HonNonBoCTA />
-      <BlogSection />
-      <CTASection />
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <AboutIntro />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <Services />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <Projects />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <Stats />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <Reviews />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <HonNonBoCTA />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <BlogSection />
+      </Suspense>
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <CTASection />
+      </Suspense>
+      
       <Footer />
       <FloatingContact />
     </main>
