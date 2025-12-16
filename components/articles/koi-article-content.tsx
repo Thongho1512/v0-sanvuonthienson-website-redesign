@@ -351,7 +351,7 @@ export default function KoiArticleContent() {
                 <div>
                     <h3 className="text-xl font-bold text-amber-900 mb-2">Nghệ Nhân Lê Anh</h3>
                     <p className="text-gray-700 leading-relaxed">
-                    Với hơn 20 năm kinh nghiệm và hơn 10000 mẫu thiết kế và Thi Công Hòn Non Bộ – Thi Công Hồ Cá Koi – 
+                    Với hơn 15 năm kinh nghiệm và hơn 10000 mẫu thiết kế và Thi Công Hòn Non Bộ – Thi Công Hồ Cá Koi – 
                     Trang trí sân vườn tiểu cảnh – Tiểu cảnh gầm cầu thang.
                     </p>
                 </div>

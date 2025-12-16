@@ -54,7 +54,7 @@ export default function AboutIntro() {
             </h2>
 
             <p className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6">
-              tại tu gia, biệt thự, sân vườn, quán cafe. Bên cạnh đó, với hơn 15 năm trong nghề cùng tài hoa của 
+              tại tư gia, biệt thự, sân vườn, quán cafe. Bên cạnh đó, với hơn 15 năm trong nghề cùng tài hoa của 
               nghệ nhân tại Huế, Thiên Sơn có thể nhận và hoàn thành các công trình hòn non bộ cho chùa, Nhà thờ 
               cũng như các quán cafe sân vườn muốn trang trí bằng hồ cá Koi kết hợp thác nước và hòn non bộ...
             </p>

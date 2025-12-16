@@ -9,13 +9,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Company Info */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
-              <Image src="/logo-removebg-preview.png" alt="Thiên Sơn" width={48} height={48} className="w-12 h-12 brightness-0 invert" />
-              <div>
-                <div className="font-bold text-xl">Thiên Sơn</div>
-                <div className="text-sm text-background/70">Landscape</div>
-              </div>
-            </div>
+            <h3 className="font-extrabold text-xl mb-4 text-white">Thiên Sơn Landscape</h3>
             <p className="text-background/80 leading-relaxed mb-4">
               Công ty TNHH Sân Vườn Thiên Sơn
             </p>
@@ -26,7 +20,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Dịch Vụ</h3>
+            <h3 className="font-extrabold text-lg mb-4 text-white">Dịch Vụ</h3>
             <ul className="space-y-3">
               <li>
                 <Link href="/thi-cong-ho-ca-koi" className="text-background/80 hover:text-primary transition-colors">
@@ -53,7 +47,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Liên Hệ</h3>
+            <h3 className="font-extrabold text-lg mb-4 text-white">Liên Hệ</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Phone size={18} className="mt-1 flex-shrink-0" />
@@ -76,7 +70,7 @@ export default function Footer() {
 
           {/* Branches */}
           <div>
-            <h3 className="font-bold text-lg mb-4">Cơ Sở</h3>
+            <h3 className="font-extrabold text-lg mb-4 text-white">Cơ Sở</h3>
             <ul className="space-y-3 text-background/80 text-sm">
               <li>
                 <p className="font-semibold text-background/90 mb-1">Cơ Sở 1</p>

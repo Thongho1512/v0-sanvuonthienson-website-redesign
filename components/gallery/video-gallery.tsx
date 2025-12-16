@@ -1,87 +1,103 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Play, VideoIcon, X } from "lucide-react"
-import { useState } from "react"
-import Image from "next/image"
+import { useState, useRef, useEffect } from "react"
+import { Play, Video, X, Pause } from "lucide-react"
 
-const videos = [
+interface VideoType {
+  id: number
+  videoPath: string
+  duration: string
+}
+
+const videos: VideoType[] = [
   {
     id: 1,
-    title: "Thi Công Hồ Koi Biệt Thú 50m² - Phú Mỹ Hưng",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=luxury koi pond construction site",
-    duration: "5:30",
-    views: "15K",
-    category: "Hồ Cá Koi",
+    videoPath: "/video/1.mp4",
+    duration: "1:22",
   },
   {
     id: 2,
-    title: "Quá Trình Làm Hòn Non Bộ Chùa Linh Ẩn",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=traditional rockscape construction process",
-    duration: "8:15",
-    views: "22K",
-    category: "Hòn Non Bộ",
+    videoPath: "/video/2.mp4",
+    duration: "0:34",
   },
   {
     id: 3,
-    title: "Phối Cảnh 3D Sân Vườn Villa Đà Lạt",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d garden landscape visualization",
-    duration: "3:45",
-    views: "12K",
-    category: "Phối Cảnh 3D",
+    videoPath: "/video/3.mp4",
+    duration: "4:32",
   },
   {
     id: 4,
-    title: "Thi Công Hệ Thống Lọc Nước Hồ Koi Chuyên Nghiệp",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=koi pond filtration system installation",
+    videoPath: "/video/4.mp4",
     duration: "6:20",
-    views: "18K",
-    category: "Hồ Cá Koi",
   },
   {
     id: 5,
-    title: "Nghệ Thuật Đặt Đá Hòn Non Bộ - Bí Quyết Từ Nghệ Nhân",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=artistic stone placement technique",
-    duration: "10:30",
-    views: "35K",
-    category: "Hòn Non Bộ",
+    videoPath: "/video/5.mp4",
+    duration: "0:25",
   },
   {
     id: 6,
-    title: "Review Sau 2 Năm Sử Dụng Hồ Koi Thiên Sơn",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=beautiful koi pond after 2 years",
-    duration: "4:50",
-    views: "28K",
-    category: "Hồ Cá Koi",
+    videoPath: "/video/6.mp4",
+    duration: "3:18",
+  },
+  {
+    id: 7,
+    videoPath: "/video/7.mp4",
+    duration: "3:24",
+  },
+  {
+    id: 8,
+    videoPath: "/video/8.mp4",
+    duration: "5:05",
   },
 ]
 
 export default function VideoGallery() {
-  const { ref, isVisible } = useScrollAnimation()
-  const [selectedVideo, setSelectedVideo] = useState<(typeof videos)[0] | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<VideoType | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (selectedVideo && videoRef.current) {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }, [selectedVideo])
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  const closeModal = () => {
+    if (videoRef.current) {
+      videoRef.current.pause()
+      videoRef.current.currentTime = 0
+    }
+    setSelectedVideo(null)
+    setIsPlaying(false)
+  }
 
   return (
     <>
       <section 
-        className="py-20 bg-violet-200 relative overflow-hidden" 
-        ref={ref} 
+        className="py-20 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 relative overflow-hidden" 
         id="videos"
       >
         {/* Decorative background elements */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-blue-300/15 rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-indigo-300/15 rounded-full blur-3xl" />
-        <div className="absolute inset-0 bg-pattern-dots opacity-[0.02]" />
         
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12 opacity-0 animate-[fadeIn_0.8s_ease-out_forwards]">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-600 font-medium mb-4">
-              <VideoIcon className="w-4 h-4" />
+              <Video className="w-4 h-4" />
               Video Thi Công
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -90,27 +106,23 @@ export default function VideoGallery() {
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Xem quy trình thi công thực tế các dự án đã hoàn thành
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {videos.map((video, index) => (
-              <motion.div
+              <div
                 key={video.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isVisible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group cursor-pointer"
+                className="group cursor-pointer opacity-0 animate-[fadeInUp_0.6s_ease-out_forwards]"
+                style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() => setSelectedVideo(video)}
               >
                 <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-800 mb-4 shadow-lg hover:shadow-2xl transition-all duration-300">
-                  {/* ✅ Image với lazy loading thay cho background-image */}
-                  <Image
-                    src={video.thumbnail || "/placeholder.svg"}
-                    alt={video.title}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  {/* Video Thumbnail */}
+                  <video
+                    src={video.videoPath}
+                    className="w-full h-full object-cover"
+                    muted
+                    playsInline
                   />
                   
                   {/* Gradient overlay */}
@@ -118,7 +130,7 @@ export default function VideoGallery() {
 
                   {/* Play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
+                    <div className="w-16 h-16 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-2xl">
                       <Play className="w-7 h-7 text-white ml-1" fill="currentColor" />
                     </div>
                   </div>
@@ -127,38 +139,18 @@ export default function VideoGallery() {
                   <div className="absolute bottom-3 right-3 px-2 py-1 rounded-lg bg-black/80 backdrop-blur-sm text-white text-sm font-medium">
                     {video.duration}
                   </div>
-
-                  {/* View count overlay on hover */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-black/80 backdrop-blur-sm text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    👁️ {video.views} views
-                  </div>
                 </div>
-
-                <div className="space-y-2">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
-                    {video.category}
-                  </span>
-                  <h3 className="font-semibold text-lg text-gray-900 group-hover:text-blue-600 transition-colors line-clamp-2">
-                    {video.title}
-                  </h3>
-                  <p className="text-sm text-gray-500">{video.views} lượt xem</p>
-                </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
           {/* Call to action */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="text-center mt-12"
-          >
+          <div className="text-center mt-12 opacity-0 animate-[fadeIn_0.8s_ease-out_0.8s_forwards]">
             <p className="text-gray-600 mb-4">
               Theo dõi kênh YouTube để xem thêm nhiều video thi công mới nhất
             </p>
             <a
-              href="https://youtube.com/@thiensongarden"
+              href="https://www.youtube.com/@sanvuonthienson"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors shadow-lg hover:shadow-xl"
@@ -168,89 +160,100 @@ export default function VideoGallery() {
               </svg>
               Đăng Ký Kênh YouTube
             </a>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Video modal với animation mượt */}
+      {/* Video Modal với Video Player */}
       {selectedVideo && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
-          onClick={() => setSelectedVideo(null)}
+        <div
+          className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4 animate-[fadeIn_0.3s_ease-out]"
+          onClick={closeModal}
         >
           {/* Close button */}
           <button
             className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors z-10"
-            onClick={() => setSelectedVideo(null)}
+            onClick={closeModal}
             aria-label="Đóng"
           >
             <X className="w-6 h-6 text-white" />
           </button>
 
           {/* Video container */}
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative max-w-6xl w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden shadow-2xl border border-blue-500/30"
+          <div
+            className="relative max-w-6xl w-full aspect-video rounded-2xl overflow-hidden shadow-2xl animate-[scaleIn_0.3s_ease-out_0.1s_both]"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Placeholder content - Thay bằng video player thực tế */}
-            <div className="absolute inset-0 flex items-center justify-center text-white">
-              <div className="text-center">
-                <VideoIcon className="w-16 h-16 mx-auto mb-4 opacity-50 text-blue-400 animate-pulse" />
-                <p className="text-xl font-medium mb-2">{selectedVideo.title}</p>
-                <p className="text-sm text-gray-400 mb-4">Video player sẽ được tích hợp ở đây</p>
-                
-                {/* Video info */}
-                <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                    {selectedVideo.category}
-                  </span>
-                  <span>•</span>
-                  <span>⏱️ {selectedVideo.duration}</span>
-                  <span>•</span>
-                  <span>👁️ {selectedVideo.views} lượt xem</span>
-                </div>
+            <video
+              ref={videoRef}
+              src={selectedVideo.videoPath}
+              className="w-full h-full object-contain bg-black"
+              controls
+              playsInline
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            />
 
-                {/* Action buttons */}
-                <div className="flex gap-4 justify-center mt-6">
-                  <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors">
-                    ▶️ Phát Video
-                  </button>
-                  <button className="px-6 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
-                    📤 Chia Sẻ
-                  </button>
+            {/* Custom play/pause overlay (optional) */}
+            {!isPlaying && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer"
+                onClick={togglePlayPause}
+              >
+                <div className="w-20 h-20 rounded-full bg-white/90 flex items-center justify-center hover:bg-white transition-colors">
+                  <Play className="w-10 h-10 text-gray-800 ml-1" fill="currentColor" />
                 </div>
               </div>
-            </div>
-
-            {/* Loading skeleton effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent animate-shimmer pointer-events-none" />
-          </motion.div>
+            )}
+          </div>
 
           {/* Video description */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: 0.2 }}
-            className="absolute bottom-8 left-1/2 -translate-x-1/2 max-w-4xl w-full px-4"
-          >
+          <div className="absolute bottom-8 left-1/2 -translate-x-1/2 max-w-4xl w-full px-4 animate-[fadeInUp_0.3s_ease-out_0.2s_both]">
             <div className="bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-gray-700">
-              <p className="text-white text-sm text-center">
-                💡 <strong>Lưu ý:</strong> Đây là video thực tế quá trình thi công. 
-                Mọi thông tin chi tiết vui lòng liên hệ <strong className="text-blue-400">0938 386 679</strong>
+              <div className="flex items-center gap-4 text-sm text-gray-300">
+                <span>⏱️ {selectedVideo.duration}</span>
+                <span>🎬 Video {selectedVideo.id}</span>
+              </div>
+              <p className="text-white text-sm mt-3">
+                💡 Mọi thông tin chi tiết vui lòng liên hệ <strong className="text-blue-400">0938 386 679</strong>
               </p>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
+
+      <style jsx>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      `}</style>
     </>
   )
 }

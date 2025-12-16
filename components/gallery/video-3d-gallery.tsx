@@ -3,63 +3,109 @@
 import { motion } from "framer-motion"
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 import { Play, Layers, X } from "lucide-react"
-import { useState } from "react"
-import Image from "next/image"
+import { useState, useRef, useEffect } from "react"
 
-const videos3D = [
+interface Video3DType {
+  id: number
+  videoPath: string
+  duration: string
+}
+
+const videos3D: Video3DType[] = [
   {
     id: 1,
-    title: "Phối Cảnh 3D Biệt Thự Vườn Cá Koi",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d villa koi pond rendering",
+    videoPath: "/videos3d/1.mp4",
     duration: "2:45",
-    views: "8.5K",
-    category: "Biệt Thự",
   },
   {
     id: 2,
-    title: "Mô Phỏng 3D Hòn Non Bộ Sân Vườn",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d rockscape garden visualization",
+    videoPath: "/videos3d/2.mp4",
     duration: "3:20",
-    views: "6.2K",
-    category: "Hòn Non Bộ",
   },
   {
     id: 3,
-    title: "Render 3D Sân Vườn Cafe Hiện Đại",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d modern cafe garden design",
+    videoPath: "/videos3d/3.mp4",
     duration: "2:15",
-    views: "9.8K",
-    category: "Cafe",
   },
   {
     id: 4,
-    title: "Phối Cảnh 3D Hồ Koi Resort Cao Cấp",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d luxury resort koi pond",
+    videoPath: "/videos3d/4.mp4",
     duration: "4:10",
-    views: "12K",
-    category: "Resort",
   },
   {
     id: 5,
-    title: "Mô Phỏng 3D Tiểu Cảnh Nhà Hàng",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d restaurant landscape design",
+    videoPath: "/videos3d/5.mp4",
     duration: "3:05",
-    views: "7.3K",
-    category: "Nhà Hàng",
   },
   {
     id: 6,
-    title: "Render 3D Vườn Zen Nhật Bản",
-    thumbnail: "/public/placeholder.svg?height=400&width=600&query=3d japanese zen garden render",
+    videoPath: "/videos3d/6.mp4",
     duration: "2:50",
-    views: "10K",
-    category: "Sân Vườn",
+  },
+  {
+    id: 7,
+    videoPath: "/videos3d/7.mp4",
+    duration: "3:15",
+  },
+  {
+    id: 8,
+    videoPath: "/videos3d/8.mp4",
+    duration: "2:30",
+  },
+  {
+    id: 9,
+    videoPath: "/videos3d/9.mp4",
+    duration: "3:40",
+  },
+  {
+    id: 10,
+    videoPath: "/videos3d/10.mp4",
+    duration: "4:25",
+  },
+  {
+    id: 11,
+    videoPath: "/videos3d/11.mp4",
+    duration: "3:00",
+  },
+  {
+    id: 12,
+    videoPath: "/videos3d/12.mp4",
+    duration: "2:55",
   },
 ]
 
 export default function Video3DGallery() {
   const { ref, isVisible } = useScrollAnimation()
-  const [selectedVideo, setSelectedVideo] = useState<(typeof videos3D)[0] | null>(null)
+  const [selectedVideo, setSelectedVideo] = useState<Video3DType | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    if (selectedVideo && videoRef.current) {
+      videoRef.current.play()
+      setIsPlaying(true)
+    }
+  }, [selectedVideo])
+
+  const togglePlayPause = () => {
+    if (videoRef.current) {
+      if (isPlaying) {
+        videoRef.current.pause()
+      } else {
+        videoRef.current.play()
+      }
+      setIsPlaying(!isPlaying)
+    }
+  }
+
+  const closeModal = () => {
+    if (videoRef.current) {
+      videoRef.current.pause()
+      videoRef.current.currentTime = 0
+    }
+    setSelectedVideo(null)
+    setIsPlaying(false)
+  }
 
   return (
     <>
@@ -76,7 +122,7 @@ export default function Video3DGallery() {
               Phối Cảnh 3D
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Video <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Phối Cảnh 3D</span>
+              <span className="text-white">Video</span> <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400">Phối Cảnh 3D</span>
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Xem trước thiết kế qua mô hình 3D chân thực trước khi thi công
@@ -94,23 +140,16 @@ export default function Video3DGallery() {
                 onClick={() => setSelectedVideo(video)}
               >
                 <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-800 mb-4 border border-gray-700">
-                  {/* ✅ Image với lazy loading thay cho background-image */}
-                  <Image
-                    src={video.thumbnail || "/placeholder.svg"}
-                    alt={video.title}
-                    fill
-                    className="object-cover"
-                    loading="lazy"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  {/* Video Thumbnail */}
+                  <video
+                    src={video.videoPath}
+                    className="w-full h-full object-cover"
+                    muted
+                    playsInline
                   />
                   
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent group-hover:from-black/60 transition-colors duration-300" />
-
-                  {/* 3D badge */}
-                  <div className="absolute top-3 left-3 px-3 py-1 rounded-lg bg-purple-600/90 backdrop-blur-sm text-white text-xs font-bold">
-                    3D RENDER
-                  </div>
 
                   {/* Play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -125,15 +164,6 @@ export default function Video3DGallery() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <span className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-purple-900/30 border border-purple-500/30 text-purple-300">
-                    {video.category}
-                  </span>
-                  <h3 className="font-semibold text-lg text-white group-hover:text-purple-400 transition-colors line-clamp-2">
-                    {video.title}
-                  </h3>
-                  <p className="text-sm text-gray-500">{video.views} lượt xem</p>
-                </div>
               </motion.div>
             ))}
           </div>
@@ -148,12 +178,12 @@ export default function Video3DGallery() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
-          onClick={() => setSelectedVideo(null)}
+          onClick={closeModal}
         >
           {/* Close button */}
           <button
             className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center hover:bg-white/20 transition-colors z-10"
-            onClick={() => setSelectedVideo(null)}
+            onClick={closeModal}
             aria-label="Đóng"
           >
             <X className="w-6 h-6 text-white" />
@@ -165,30 +195,49 @@ export default function Video3DGallery() {
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="relative max-w-6xl w-full aspect-video bg-gray-900 rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl"
+            className="relative max-w-6xl w-full aspect-video rounded-2xl overflow-hidden border border-purple-500/30 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Placeholder content - Thay bằng video player thực tế */}
-            <div className="absolute inset-0 flex items-center justify-center text-white">
-              <div className="text-center">
-                <Layers className="w-16 h-16 mx-auto mb-4 opacity-50 text-purple-400 animate-pulse" />
-                <p className="text-xl font-medium mb-2">{selectedVideo.title}</p>
-                <p className="text-sm text-gray-400 mb-4">Video 3D sẽ được tích hợp ở đây</p>
-                <div className="flex items-center justify-center gap-6 text-sm text-gray-500">
-                  <span className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                    {selectedVideo.category}
-                  </span>
-                  <span>•</span>
-                  <span>{selectedVideo.duration}</span>
-                  <span>•</span>
-                  <span>{selectedVideo.views} lượt xem</span>
+            <video
+              ref={videoRef}
+              src={selectedVideo.videoPath}
+              className="w-full h-full object-contain bg-black"
+              controls
+              playsInline
+              onPlay={() => setIsPlaying(true)}
+              onPause={() => setIsPlaying(false)}
+            />
+
+            {/* Custom play/pause overlay */}
+            {!isPlaying && (
+              <div
+                className="absolute inset-0 flex items-center justify-center bg-black/30 cursor-pointer"
+                onClick={togglePlayPause}
+              >
+                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center hover:scale-110 transition-transform">
+                  <Play className="w-10 h-10 text-white ml-1" fill="currentColor" />
                 </div>
               </div>
-            </div>
+            )}
+          </motion.div>
 
-            {/* Loading skeleton effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-purple-500/5 to-transparent animate-shimmer pointer-events-none" />
+          {/* Video description */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 max-w-4xl w-full px-4"
+          >
+            <div className="bg-gray-900/80 backdrop-blur-md rounded-xl p-4 border border-purple-500/30">
+              <div className="flex items-center gap-4 text-sm text-gray-300">
+                <span>⏱️ {selectedVideo.duration}</span>
+                <span>•</span>
+                <span>🎬 Video {selectedVideo.id}</span>
+              </div>
+              <p className="text-white text-sm mt-3">
+                💡 Mọi thông tin chi tiết vui lòng liên hệ <strong className="text-purple-400">0938 386 679</strong>
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       )}
