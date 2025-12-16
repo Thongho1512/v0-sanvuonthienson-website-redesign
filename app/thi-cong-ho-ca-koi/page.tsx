@@ -3,9 +3,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
 import KoiHero from "@/components/services/koi-hero"
-import KoiFeatures from "@/components/services/koi-features"
-import KoiGallery from "@/components/services/koi-gallery"
-import KoiProcess from "@/components/services/koi-process"
+import KoiArticleSection from "@/components/services/koi-article-section" 
 
 export const metadata: Metadata = {
   title: "Thi Công Hồ Cá Koi Chuyên Nghiệp | Thiên Sơn Landscape",
@@ -19,9 +17,7 @@ export default function KoiPage() {
     <main className="w-full overflow-x-hidden">
       <Header />
       <KoiHero />
-      <KoiFeatures />
-      <KoiProcess />
-      <KoiGallery />
+      <KoiArticleSection />
       <Footer />
       <FloatingContact />
     </main>
