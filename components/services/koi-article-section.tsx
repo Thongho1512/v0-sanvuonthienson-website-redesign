@@ -173,6 +173,21 @@ export default function KoiArticleSection() {
               "tuổi" của chủ nhà. Từ đó đảm bảo việc tư vấn – thiết kế hồ KOI tiết kiệm nhất cho gia chủ.
             </p>
 
+            <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
+                <Image 
+                src="/quy-trinh-thiet-ke-thi-cong-ho-ca-koi-tai-thien-son.png"
+                alt="Quy trình thiết kế thi công hồ cá Koi"
+                width={1200}
+                height={800}
+                className="w-full"
+                />
+                <div className="bg-gray-50 p-4 text-center">
+                <p className="text-sm text-gray-600 italic">
+                    Quy trình thiết kế thi công hồ cá Koi - Tạo dấu ấn cá nhân với dịch vụ chất lượng cao
+                </p>
+                </div>
+            </div>
+
             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-2xl p-8 mb-8 border border-emerald-200">
               <h3 className="text-2xl font-bold text-emerald-900 mb-6 text-center">
                 Tiêu Chí Thiết Kế Thi Công Hồ Cá Koi Đạt Chuẩn
@@ -223,6 +238,21 @@ export default function KoiArticleSection() {
                     gia chủ mà các kiến trúc sư có thể sáng tạo ra các hình dáng phù hợp. Để đảm bảo tính thẩm mỹ và 
                     sự độc đáo bạn nên được các chuyên gia tư vấn về mẫu và lên ý tưởng bản vẽ 3D.
                   </p>
+                  <p></p>
+                  <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
+                    <Image 
+                    src="/hinh-dang-thiet-ke-ho-ca-Koi.jpeg"
+                    alt="Hình dáng hồ cá KOI"
+                    width={800}
+                    height={530}
+                    className="w-full"
+                    />
+                    <div className="bg-gray-50 p-4 text-center">
+                    <p className="text-sm text-gray-600 italic">
+                        Hình dáng hồ cá KOI - Tạo dấu ấn cá nhân với dịch vụ chất lượng cao
+                    </p>
+                    </div>
+                </div>
                 </div>
 
                 {/* Vị trí */}
