@@ -5,34 +5,34 @@ import Image from "next/image"
 
 const services = [
   {
-    title: "Thiết Kế Hồ Cá Koi",
-    description: "Thiết kế & thi công hồ cá Koi chuyên nghiệp, hệ thống lọc hiện đại, phong thủy hợp lý. Cam kết chất lượng nước trong, môi trường sống tốt nhất cho cá Koi.",
-    image: "/luxury-koi-pond-landscape-modern-design.jpg",
+    title: "HÒN NON BỘ",
+    description: "Tư vấn theo kich thước gia chủ. Lựa chọn đá tự nhiên, bố cục hài hòa. Tạo điểm nhấn thiên nhiên trong không gian sống.",
+    image: "/26.png",
   },
   {
-    title: "Thi Công Hòn Non Bộ",
-    description: "Thiết kế hòn non bộ độc đáo, chọn đá tự nhiên cao cấp, bố cục phong thủy. Mang thiên nhiên hùng vĩ vào không gian sống của bạn.",
-    image: "/traditional-vietnamese-rock-garden-landscape.jpg",
+    title: "HỒ CÁ KOI",
+    description: "Kích hoạt may mắn và tài lộc cho gia chủ. Thiết kế hồ cá Koi đẹp mắt, hệ thống lọc nước hiện đại, tiết kiệm chi phí vận hành.",
+    image: "/15.jpg",
   },
   {
-    title: "Thiết Kế Sân Vườn",
-    description: "Quy hoạch tổng thể sân vườn, lựa chọn cây cảnh phù hợp khí hậu, bố trí không gian hài hòa. Tạo nên khu vườn xanh mát, thư giãn.",
-    image: "/modern-minimalist-garden-landscape-design.jpg",
+    title: "TIỂU CẢNH SÂN VƯỜN",
+    description: "Có bảng vẽ thiết kế phối cảnh 2D, 3D theo phong cách bạn chọn. Thiết kế cảnh quan sân vườn hài hòa với kiến trúc ngôi nhà.",
+    image: "/27.png",
   },
   {
-    title: "Tiểu Cảnh Trang Trí",
-    description: "Thiết kế tiểu cảnh mini, bonsai, terrarium, góc xanh trong nhà. Điểm nhấn tinh tế cho không gian sống hiện đại.",
-    image: "/luxury-modern-koi-pond-villa-landscape.jpg",
+    title: "QUÁN CAFE CÁ KOI",
+    description: "Tiết kiệm tối đa chi phí thi công với hồ cá Koi. Tạo không gian thư giãn, thu hút khách hàng.",
+    image: "/22.jpg",
   },
   {
-    title: "Cảnh Quan Biệt Thú",
-    description: "Thiết kế tổng thể cảnh quan biệt thự, resort, khách sạn. Kết hợp kiến trúc và thiên nhiên, tạo không gian sống đẳng cấp.",
-    image: "/luxury-koi-pond-landscape-modern-design.jpg",
+    title: "THIẾT KẾ CẢNH QUAN",
+    description: "Mang đến tác phẩm cảnh quan hài hòa phù hợp nhất với khách hàng và môi trường xung quanh.",
+    image: "/12.jpg",
   },
   {
-    title: "Tư Vấn Phong Thủy",
-    description: "Tư vấn phong thủy sân vườn, bố trí hồ nước, hòn non bộ hợp mệnh. Giúp gia chủ thu hút tài lộc, may mắn và bình an.",
-    image: "/traditional-vietnamese-rock-garden-landscape.jpg",
+    title: "NON BỘ + CÁ KOI",
+    description: "Tư vấn thiết bị phù hợp nhất với nhu cầu sử dụng của gia chủ. Thiết kế hồ cá Koi kết hợp hòn non bộ độc đáo, ấn tượng.",
+    image: "/29.jpg",
   },
 ]
 
@@ -68,7 +68,7 @@ export default function Services() {
             </span>
           </h2>
           
-          <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4 leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed">
             Chúng tôi cung cấp giải pháp toàn diện cho không gian sân vườn của bạn
           </p>
         </div>

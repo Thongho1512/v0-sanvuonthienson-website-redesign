@@ -27,16 +27,13 @@ export default function HonNonBoCTA() {
         </svg>
       </div>
       
-      {/* Accent line decoration */}
-      <div className="absolute top-1/4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-600/40 to-transparent" />
-      <div className="absolute bottom-1/3 left-0 w-full h-1 bg-gradient-to-r from-transparent via-amber-500/30 to-transparent" />
       
       {/* Floating elements */}
       <div className="absolute inset-0 overflow-hidden">
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-amber-600/6 animate-float"
+            className="absolute rounded-full bg-amber-600/20 animate-float"
             style={{
               width: `${Math.random() * 60 + 20}px`,
               height: `${Math.random() * 60 + 20}px`,
@@ -57,17 +54,17 @@ export default function HonNonBoCTA() {
           </h2>
 
           <div className={`max-w-3xl mx-auto transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
-            <p className="text-base sm:text-lg md:text-xl text-[#2d5339] leading-relaxed mb-6 sm:mb-8 font-medium px-2 sm:px-0">
-              Công ty TNHH <span className="font-bold text-amber-800">Thiên Sơn</span> được Nghệ Nhân <span className="font-bold text-amber-700">LÊ ANH</span> thành lập, là người góc tạo: Huế xuất phát từ phong cách Cung Đình, tỉ nghệ truyền thống có kinh nghiệm lâu năm trong việc chế tác <span className="font-bold text-amber-800">HÒN NON BỘ</span>, <span className="font-bold text-amber-700">THIẾT KẾ THI CÔNG HỒ CÁ KOI</span>, <span className="font-bold text-amber-700">THIẾT KẾ SÂN VƯỜN</span>.
+            <p className="text-base sm:text-lg md:text-xl text-[#234029] leading-relaxed mb-6 sm:mb-8 font-medium px-2 sm:px-0">
+              Công ty TNHH <span className="font-bold text-amber-800">Thiên Sơn</span> được Nghệ Nhân <span className="font-bold text-amber-700">LÊ ANH</span> thành lập, là người gốc tại Huế xuất phát từ phong cách Cung Đình,  
+              kỹ nghệ truyền thống có kinh nghiệm lâu năm trong việc chế tác <span className="font-bold text-amber-700">HÒN NON BỘ</span>, <span className="font-bold text-amber-700">THIẾT KẾ THI CÔNG HỒ CÁ KOI</span>, <span className="font-bold text-amber-700">THIẾT KẾ SÂN VƯỜN</span>
+              và là đơn vị dẫn đầu tạo nên các tác phẩm Tiểu Cảnh Hòn Non Bộ, đã thực hiện trên hơn 200 công trình HÒN NON BỘ TIỂU CẢNH trên khắp cả nước.
             </p>
 
-            <p className="text-sm sm:text-base md:text-lg text-[#2d5339] leading-relaxed mb-6 sm:mb-8 font-medium px-2 sm:px-0">
-              Với quá đây kinh nghiệm trên 15 năm nghệ lám HÒN NON BỘ, Nghệ Nhân <span className="font-bold text-amber-700">LÊ ANH</span> cùng với đội ngũ chuyên viên, Quý khách được sự hưỡng dẫn tử vấn về phong thủy hòn non bộ để tạo ra những sản phẩm đầy nghệ thuật và tinh tế.
+            <p className="text-base sm:text-lg md:text-xl text-[#234029] leading-relaxed mb-6 sm:mb-8 font-medium px-2 sm:px-0">
+              Với độ dày kinh nghiệm trên 15 năm trong nghề làm <span className="font-bold text-amber-700">HÒN NON BỘ TAM SƠN</span>, đến với nghệ nhân <span className="font-bold text-amber-700">LÊ ANH</span> cùng với đội ngũ kỹ sư, 
+              chuyên viênQuý khách hàng nhận được sự hài lòng trên mức độ thẩm mỹ, phong thủy hòn non bộ với chi phí hợp lý nhất cho mỗi gia đình Việt.
             </p>
 
-            <p className="text-sm sm:text-base md:text-lg text-[#2d5339] leading-relaxed font-medium px-2 sm:px-0">
-              Đã thực hiện tốn <span className="font-bold text-amber-800">200+ công trình HÒN NON BỘ</span> trên khắp cả nước, mang lại vẻ đẹp thiên nhiên và phong thủy cho các biệt thự, quán cafe, chùa chiền và không gian sống của Quý khách.
-            </p>
           </div>
 
         </div>
@@ -83,7 +80,7 @@ export default function HonNonBoCTA() {
             opacity: 0.4;
           }
           50% {
-            opacity: 0.6;
+            opacity: 0.8;
             transform: translateY(-200px) translateX(50px) rotate(180deg);
           }
           90% {

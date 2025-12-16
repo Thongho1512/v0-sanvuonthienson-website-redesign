@@ -20,13 +20,6 @@ const stats = [
     color: "text-green-500",
   },
   {
-    icon: Users,
-    value: 180,
-    suffix: "+",
-    label: "Khách Hàng Hài Lòng",
-    color: "text-purple-500",
-  },
-  {
     icon: Star,
     value: 4.9,
     suffix: "/5",
@@ -78,7 +71,7 @@ export default function Stats() {
       <div className="container mx-auto px-4 relative z-10">
         <div
           ref={ref}
-          className={`grid grid-cols-2 lg:grid-cols-4 gap-8 transition-all duration-1000 ${
+          className={`grid grid-cols-1 lg:grid-cols-3 gap-8 transition-all duration-1000 ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
           }`}
         >

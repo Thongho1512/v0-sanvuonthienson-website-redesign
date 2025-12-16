@@ -11,7 +11,6 @@ const Projects = lazy(() => import("@/components/sections/projects-showcase"))
 const Stats = lazy(() => import("@/components/sections/stats"))
 const Reviews = lazy(() => import("@/components/sections/reviews"))
 const HonNonBoCTA = lazy(() => import("@/components/sections/hon-non-bo-cta"))
-const BlogSection = lazy(() => import("@/components/sections/blog-section"))
 const CTASection = lazy(() => import("@/components/sections/cta-section"))
 
 // Loading skeleton component
@@ -40,21 +39,9 @@ export default function Home() {
       <Suspense fallback={<SectionSkeleton />}>
         <AboutIntro />
       </Suspense>
-      
-      <Suspense fallback={<SectionSkeleton />}>
-        <Services />
-      </Suspense>
-      
-      <Suspense fallback={<SectionSkeleton />}>
-        <Projects />
-      </Suspense>
-      
+
       <Suspense fallback={<SectionSkeleton />}>
         <Stats />
-      </Suspense>
-      
-      <Suspense fallback={<SectionSkeleton />}>
-        <Reviews />
       </Suspense>
       
       <Suspense fallback={<SectionSkeleton />}>
@@ -62,8 +49,21 @@ export default function Home() {
       </Suspense>
       
       <Suspense fallback={<SectionSkeleton />}>
-        <BlogSection />
+        <Services />
       </Suspense>
+
+      
+      <Suspense fallback={<SectionSkeleton />}>
+        <Projects />
+      </Suspense>
+      
+      
+      
+      {/* <Suspense fallback={<SectionSkeleton />}>
+        <Reviews />
+      </Suspense> */}
+      
+   
       
       <Suspense fallback={<SectionSkeleton />}>
         <CTASection />
