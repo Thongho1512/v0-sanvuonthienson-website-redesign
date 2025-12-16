@@ -25,9 +25,9 @@ export default function CTASection() {
         >
           {/* Heading */}
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-            Sẵn Sàng Biến Ước Mơ
+            Sẵn Sàng Tạo Nên
             <br />
-            <span className="text-sage-light">Thành Hiện Thực?</span>
+            <span className="text-sage-light">Không Gian Mơ Ước?</span>
           </h2>
 
           <p className="text-xl text-sage-light/90 mb-12 max-w-2xl mx-auto leading-relaxed">

@@ -3,9 +3,7 @@ import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
 import RockscapeHero from "@/components/services/rockscape-hero"
-import RockscapeFeatures from "@/components/services/rockscape-features"
-import RockscapeGallery from "@/components/services/rockscape-gallery"
-import RockscapeProcess from "@/components/services/rockscape-process"
+import HonNonBoContent from "@/components/services/hon-non-bo-content"
 
 export const metadata: Metadata = {
   title: "Thi Công Hòn Non Bộ Đẹp Hợp Phong Thủy | Thiên Sơn Landscape",
@@ -25,9 +23,7 @@ export default function RockscapePage() {
     <main className="w-full overflow-x-hidden">
       <Header />
       <RockscapeHero />
-      <RockscapeFeatures />
-      <RockscapeProcess />
-      <RockscapeGallery />
+      <HonNonBoContent />
       <Footer />
       <FloatingContact />
     </main>
