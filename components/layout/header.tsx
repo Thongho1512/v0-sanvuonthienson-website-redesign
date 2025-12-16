@@ -33,7 +33,6 @@ export default function Header() {
     { label: "Thi Công Hồ Cá Koi", href: "/thi-cong-ho-ca-koi", icon: Droplets },
     { label: "Thi Công Hòn Non Bộ", href: "/thi-cong-hon-non-bo", icon: Mountain },
     { label: "Thư Viện Công Trình", href: "/thu-vien-cong-trinh", icon: Briefcase },
-    { label: "Bài Viết", href: "/bai-viet", icon: BookOpen },
     { label: "Liên Hệ", href: "/lien-he", icon: Mail },
   ]
 

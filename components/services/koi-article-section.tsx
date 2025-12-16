@@ -46,7 +46,7 @@ export default function KoiArticleSection() {
 
           {/* Section 1: Tại sao hồ cá Koi được ưa chuộng */}
           <section className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <h2 className="md:text-4xl font-bold text-gray-900 mb-6">
               TẠI SAO HỒ CÁ KOI LẠI ĐƯỢC ƯA CHUỘNG TẠI VIỆT NAM?
             </h2>
             
