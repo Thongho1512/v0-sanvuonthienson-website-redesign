@@ -2,7 +2,6 @@
 
 import { Calendar, User, Eye, ArrowRight } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
 
 export default function TieuCanhSanVuonArticleContent() {
   return (
@@ -10,7 +9,7 @@ export default function TieuCanhSanVuonArticleContent() {
       {/* Hero Section */}
       <div className="relative h-[70vh] overflow-hidden">
         <Image 
-          src="/modern-minimalist-garden-landscape-design.jpg"
+          src="/24.jpg"
           alt="Những thiết kế tiểu cảnh sân vườn độc đáo"
           fill
           className="object-cover"
@@ -27,10 +26,7 @@ export default function TieuCanhSanVuonArticleContent() {
               Những Thiết Kế Tiểu Cảnh Sân Vườn Độc Đáo
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-white/80">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                14 Tháng 5, 2024
-              </span>
+
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Nghệ Nhân Lê Anh
@@ -71,7 +67,7 @@ export default function TieuCanhSanVuonArticleContent() {
           {/* Featured Image */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 
-              src="/modern-minimalist-garden-landscape-design.jpg"
+              src="/20.jpg"
               alt="Thiết kế tiểu cảnh sân vườn đơn giản"
               width={1200}
               height={800}
@@ -131,7 +127,7 @@ export default function TieuCanhSanVuonArticleContent() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                 <Image 
-                  src="/modern-minimalist-garden-landscape-design.jpg"
+                  src="/26.png"
                   alt="Tiểu cảnh sân vườn 1"
                   width={600}
                   height={400}
@@ -144,7 +140,7 @@ export default function TieuCanhSanVuonArticleContent() {
 
               <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                 <Image 
-                  src="/luxury-modern-koi-pond-villa-landscape.jpg"
+                  src="/21.jpg"
                   alt="Tiểu cảnh sân vườn 2"
                   width={600}
                   height={400}
@@ -155,31 +151,9 @@ export default function TieuCanhSanVuonArticleContent() {
                 </div>
               </div>
 
-              <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <Image 
-                  src="/traditional-vietnamese-rock-garden-landscape.jpg"
-                  alt="Tiểu cảnh sân vườn 3"
-                  width={600}
-                  height={400}
-                  className="w-full h-80 object-cover"
-                />
-                <div className="bg-gray-50 p-4">
-                  <p className="text-sm text-gray-600 font-medium">Hòn non bộ truyền thống</p>
-                </div>
-              </div>
+              
 
-              <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                <Image 
-                  src="/luxury-koi-pond-landscape-modern-design.jpg"
-                  alt="Tiểu cảnh sân vườn 4"
-                  width={600}
-                  height={400}
-                  className="w-full h-80 object-cover"
-                />
-                <div className="bg-gray-50 p-4">
-                  <p className="text-sm text-gray-600 font-medium">Góc sân vườn thư giãn</p>
-                </div>
-              </div>
+              
             </div>
           </section>
 
@@ -217,7 +191,7 @@ export default function TieuCanhSanVuonArticleContent() {
                   <p className="text-gray-600 text-sm">Cây thân lớn che mát, không rụng lá nhiều</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-sm">
-                  <h4 className="font-bold text-gray-900 mb-3">🪨 Hòn Non Bộ</h4>
+                  <h4 className="font-bold text-gray-900 mb-3">Hòn Non Bộ</h4>
                   <p className="text-gray-600 text-sm">Điểm nhấn nghệ thuật cho sân vườn</p>
                 </div>
                 <div className="bg-white rounded-xl p-6 shadow-sm">
@@ -239,7 +213,7 @@ export default function TieuCanhSanVuonArticleContent() {
                 <div className="md:flex">
                   <div className="md:w-1/2">
                     <Image 
-                      src="/modern-minimalist-garden-landscape-design.jpg"
+                      src="/32.jpg"
                       alt="Góc cafe tại nhà"
                       width={600}
                       height={400}
@@ -262,7 +236,7 @@ export default function TieuCanhSanVuonArticleContent() {
                 <div className="md:flex flex-row-reverse">
                   <div className="md:w-1/2">
                     <Image 
-                      src="/luxury-modern-koi-pond-villa-landscape.jpg"
+                      src="/30.jpg"
                       alt="Mảng xanh mát"
                       width={600}
                       height={400}
@@ -285,7 +259,7 @@ export default function TieuCanhSanVuonArticleContent() {
                 <div className="md:flex">
                   <div className="md:w-1/2">
                     <Image 
-                      src="/traditional-vietnamese-rock-garden-landscape.jpg"
+                      src="/10.jpg"
                       alt="Sỏi đá"
                       width={600}
                       height={400}
@@ -294,7 +268,7 @@ export default function TieuCanhSanVuonArticleContent() {
                   </div>
                   <div className="p-8 md:w-1/2">
                     <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                      🪨 Sỏi Đá Đáng Yêu
+                      Sỏi Đá Đáng Yêu
                     </h3>
                     <p className="text-gray-700 leading-relaxed text-lg">
                       Một chút sỏi đá đáng yêu thì sao nhỉ? Tạo điểm nhấn tinh tế, tăng thêm 

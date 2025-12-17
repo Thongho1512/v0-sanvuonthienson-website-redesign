@@ -19,12 +19,6 @@ const projects = [
     link: '/bai-viet/nhung-thiet-ke-tieu-canh-san-vuon-doc-dao'
   },
   {
-    id: 3,
-    title: 'Tiểu cảnh cầu thang đẹp, độc đáo',
-    image: '/31.jpg',
-    link: '/bai-viet/nhung-hinh-anh-tieu-canh-cau-thang-dep-doc-dao'
-  },
-  {
     id: 4,
     title: 'Thi công hòn non bộ đẹp hợp phong thủy giá rẻ nhất',
     image: '/12.jpg',

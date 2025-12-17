@@ -10,7 +10,7 @@ export default function CanhQuanSanVuonArticleContent() {
       {/* Hero Section */}
       <div className="relative h-[70vh] overflow-hidden">
         <Image 
-          src="/modern-minimalist-garden-landscape-design.jpg"
+          src="/24.jpg"
           alt="Cách thiết kế, bố trí cảnh quan sân vườn đẹp"
           fill
           className="object-cover"
@@ -27,10 +27,7 @@ export default function CanhQuanSanVuonArticleContent() {
               Cách Thiết Kế, Bố Trí Cảnh Quan Sân Vườn Đẹp
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-white/80">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                13 Tháng 5, 2024
-              </span>
+              
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Nghệ Nhân Lê Anh
@@ -65,7 +62,7 @@ export default function CanhQuanSanVuonArticleContent() {
           {/* Featured Image */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 
-              src="/modern-minimalist-garden-landscape-design.jpg"
+              src="/20.jpg"
               alt="Thiết kế cảnh quan sân vườn đẹp"
               width={1200}
               height={800}

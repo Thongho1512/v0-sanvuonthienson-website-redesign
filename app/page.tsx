@@ -9,7 +9,6 @@ const AboutIntro = lazy(() => import("@/components/sections/about-intro"))
 const Services = lazy(() => import("@/components/sections/services"))
 const Projects = lazy(() => import("@/components/sections/projects-showcase"))
 const Stats = lazy(() => import("@/components/sections/stats"))
-const Reviews = lazy(() => import("@/components/sections/reviews"))
 const HonNonBoCTA = lazy(() => import("@/components/sections/hon-non-bo-cta"))
 const CTASection = lazy(() => import("@/components/sections/cta-section"))
 

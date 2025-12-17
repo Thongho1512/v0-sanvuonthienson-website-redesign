@@ -10,7 +10,7 @@ export default function KoiArticleContent() {
       {/* Hero Section */}
       <div className="relative h-[70vh] overflow-hidden">
         <Image 
-          src="/luxury-koi-pond-landscape-modern-design.jpg"
+          src="/23.jpg"
           alt="Thi công hồ cá Koi"
           fill
           className="object-cover"
@@ -27,10 +27,6 @@ export default function KoiArticleContent() {
               Đơn Vị Thiết Kế - Thi Công Hồ Cá Koi Số 1 Miền Nam
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-white/80">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                17 Tháng 5, 2024
-              </span>
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Nghệ Nhân Lê Anh
@@ -64,7 +60,7 @@ export default function KoiArticleContent() {
           {/* Featured Image */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 
-              src="/luxury-koi-pond-landscape-modern-design.jpg"
+              src="/15.jpg"
               alt="Thiết kế sân vườn hồ cá koi"
               width={1200}
               height={800}
@@ -117,7 +113,7 @@ export default function KoiArticleContent() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image 
-                  src="/luxury-modern-koi-pond-villa-landscape.jpg"
+                  src="/14.jpg"
                   alt="Không gian sống cùng thiên nhiên"
                   width={600}
                   height={400}
@@ -129,7 +125,7 @@ export default function KoiArticleContent() {
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image 
-                  src="/modern-minimalist-garden-landscape-design.jpg"
+                  src="/33.jpg"
                   alt="Bình yên giữa lòng phố thị"
                   width={600}
                   height={400}
@@ -387,17 +383,33 @@ export default function KoiArticleContent() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
                     <Image 
-                    src="/luxury-koi-pond-landscape-modern-design.jpg"
-                    alt={`Công trình hồ cá Koi ${i}`}
+                    src="/23.jpg"
+                    alt={`Công trình hồ cá Koi`}
                     width={600}
                     height={400}
                     className="w-full h-64 object-cover"
                     />
                 </div>
-                ))}
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <Image 
+                    src="/11.jpg"
+                    alt={`Công trình hồ cá Koi`}
+                    width={600}
+                    height={400}
+                    className="w-full h-64 object-cover"
+                    />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                    <Image 
+                    src="/23.jpg"
+                    alt={`Công trình hồ cá Koi`}
+                    width={600}
+                    height={400}
+                    className="w-full h-64 object-cover"
+                    />
+                </div>
             </div>
 
             <div className="text-center">
