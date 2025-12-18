@@ -117,7 +117,7 @@ export default function Hero() {
                 <div className="w-14 h-14 rounded-xl bg-teal-500/20 backdrop-blur-sm flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                   <Sparkles className="w-7 h-7 text-teal-300" />
                 </div>
-                <h3 className="font-bold text-white mb-2 text-lg">Công Nghệ Nhật</h3>
+                <h3 className="font-bold text-white mb-2 text-lg">Công Nghệ Tiên Tiến</h3>
                 <p className="text-sm text-teal-100/80">Hệ thống lọc nước hiện đại</p>
               </div>
             </div>

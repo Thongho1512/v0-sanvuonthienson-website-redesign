@@ -84,7 +84,7 @@ export default function KoiHero() {
               </div>
               <div className="text-left">
                 <h3 className="font-bold text-white mb-1">Lọc Nước Hiện Đại</h3>
-                <p className="text-sm text-teal-200">Công nghệ Nhật Bản</p>
+                <p className="text-sm text-teal-200">Công Nghệ Tiên Tiến Bản</p>
               </div>
             </div>
 
