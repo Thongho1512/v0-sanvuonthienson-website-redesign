@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, User, Eye, ArrowRight, Droplets, Mountain, TreeDeciduous } from "lucide-react"
+import { Calendar, User, Eye, ArrowRight, Droplets, Mountain, TreeDeciduous, Sprout  } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -10,7 +10,7 @@ export default function HonNonBoThacNuocArticleContent() {
       {/* Hero Section */}
       <div className="relative h-[70vh] overflow-hidden">
         <Image 
-          src="/traditional-vietnamese-rock-garden-landscape.jpg"
+          src="/7.jpg"
           alt="Hòn non bộ thác nước"
           fill
           className="object-cover"
@@ -27,10 +27,7 @@ export default function HonNonBoThacNuocArticleContent() {
               Hòn Non Bộ Thác Nước Và Những Lưu Ý Quan Trọng
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-white/80">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                14 Tháng 5, 2024
-              </span>
+              
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Nghệ Nhân Lê Anh
@@ -61,7 +58,7 @@ export default function HonNonBoThacNuocArticleContent() {
           {/* Featured Image */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 
-              src="/traditional-vietnamese-rock-garden-landscape.jpg"
+              src="/8.jpg"
               alt="Hòn non bộ thác nước đẹp"
               width={1200}
               height={800}
@@ -183,22 +180,42 @@ export default function HonNonBoThacNuocArticleContent() {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
                   <Image 
-                    src="/traditional-vietnamese-rock-garden-landscape.jpg"
-                    alt={`Hòn non bộ thác nước ${i}`}
+                    src="/14.jpg"
+                    alt={`Hòn non bộ thác nước`}
                     width={600}
                     height={400}
                     className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="bg-gray-50 p-4">
-                    <p className="text-sm text-gray-600 font-medium">
-                      {['Thác nước tầng bậc', 'Thác nước tự nhiên', 'Thác nước trong nhà', 'Thác nước sân vườn'][i-1]}
-                    </p>
-                  </div>
                 </div>
-              ))}
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <Image 
+                    src="/16.jpg"
+                    alt={`Hòn non bộ thác nước`}
+                    width={600}
+                    height={400}
+                    className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <Image 
+                    src="/25.jpg"
+                    alt={`Hòn non bộ thác nước`}
+                    width={600}
+                    height={400}
+                    className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                  <Image 
+                    src="/7.jpg"
+                    alt={`Hòn non bộ thác nước`}
+                    width={600}
+                    height={400}
+                    className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
             </div>
           </section>
 
@@ -312,7 +329,7 @@ export default function HonNonBoThacNuocArticleContent() {
 
               <div className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
                 <div className="h-48 bg-gradient-to-br from-lime-400 to-green-500 flex items-center justify-center">
-                  <span className="text-6xl">🪴</span>
+                  <Sprout className="w-20 h-20 text-white" />
                 </div>
                 <div className="p-4">
                   <h3 className="font-bold text-gray-900 mb-2">Cần Thăng</h3>

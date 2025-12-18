@@ -106,7 +106,7 @@ export default function Hero() {
                 <div className="w-14 h-14 rounded-xl bg-emerald-500/20 backdrop-blur-sm flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform duration-300">
                   <Shield className="w-7 h-7 text-emerald-300" />
                 </div>
-                <h3 className="font-bold text-white mb-2 text-lg">Bảo Hành 5 Năm</h3>
+                <h3 className="font-bold text-white mb-2 text-lg">Bảo Hành 10 Năm</h3>
                 <p className="text-sm text-emerald-100/80">Cam kết chất lượng dài hạn</p>
               </div>
             </div>

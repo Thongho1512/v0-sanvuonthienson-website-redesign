@@ -128,7 +128,7 @@ export default function CanhQuanSanVuonArticleContent() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image 
-                  src="/modern-minimalist-garden-landscape-design.jpg"
+                  src="/1.jpg"
                   alt="Vật liệu tự nhiên"
                   width={600}
                   height={400}
@@ -140,7 +140,7 @@ export default function CanhQuanSanVuonArticleContent() {
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image 
-                  src="/luxury-koi-pond-landscape-modern-design.jpg"
+                  src="/11.jpg"
                   alt="Hồ cá Koi bằng kính"
                   width={600}
                   height={400}
@@ -248,7 +248,7 @@ export default function CanhQuanSanVuonArticleContent() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image 
-                  src="/modern-minimalist-garden-landscape-design.jpg"
+                  src="/9.jpg"
                   alt="Bố cục cây cối"
                   width={600}
                   height={400}
@@ -260,7 +260,7 @@ export default function CanhQuanSanVuonArticleContent() {
               </div>
               <div className="rounded-xl overflow-hidden shadow-lg">
                 <Image 
-                  src="/luxury-modern-koi-pond-villa-landscape.jpg"
+                  src="/10.jpg"
                   alt="Khu vườn đầy màu sắc"
                   width={600}
                   height={400}
@@ -335,7 +335,7 @@ export default function CanhQuanSanVuonArticleContent() {
 
             <div className="rounded-2xl overflow-hidden shadow-2xl mb-8">
               <Image 
-                src="/traditional-vietnamese-rock-garden-landscape.jpg"
+                src="/24.jpg"
                 alt="Không gian thiền định"
                 width={1200}
                 height={600}
@@ -381,41 +381,6 @@ export default function CanhQuanSanVuonArticleContent() {
               </div>
             </div>
           </section>
-
-          {/* Gallery Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
-              MỘT SỐ MẪU CẢNH QUAN SÂN VƯỜN ĐẸP
-            </h2>
-            <p className="text-center text-gray-600 mb-8 text-lg">
-              Những thiết kế cảnh quan sân vườn đẹp và khoa học
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <Image 
-                    src="/modern-minimalist-garden-landscape-design.jpg"
-                    alt={`Cảnh quan sân vườn ${i}`}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <Link href="/thu-vien-cong-trinh">
-                <button className="px-8 py-4 bg-emerald-600 text-white font-bold rounded-full hover:bg-emerald-700 transition-all hover:scale-105 shadow-xl">
-                  Xem Thêm Mẫu Thiết Kế
-                  <ArrowRight className="inline-block ml-2 w-5 h-5" />
-                </button>
-              </Link>
-            </div>
-          </section>
-
-          
         </div>
       </div>
     </article>

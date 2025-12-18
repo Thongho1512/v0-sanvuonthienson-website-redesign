@@ -62,7 +62,7 @@ export default function Footer() {
                 <MapPin size={18} className="mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-background/70 text-sm mb-1">Trụ Sở</p>
-                  <span className="text-background/90 text-sm">178/19/33 Trương Thị Hoa, P.19, P.Tân Thới Hiệp, Q12, TP.HCM</span>
+                  <span className="text-background/90 text-sm">178/19/33 Trương Thị Hoa, P.Tân Thới Hiệp, Q12, TP.HCM</span>
                 </div>
               </li>
             </ul>

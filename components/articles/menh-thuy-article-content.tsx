@@ -10,7 +10,7 @@ export default function MenhThuyArticleContent() {
       {/* Hero Section */}
       <div className="relative h-[70vh] overflow-hidden">
         <Image 
-          src="/traditional-vietnamese-rock-garden-landscape.jpg"
+          src="/13.jpg"
           alt="Lưu ý quan trọng khi thiết kế hòn non bộ cho người mệnh thủy"
           fill
           className="object-cover"
@@ -27,10 +27,7 @@ export default function MenhThuyArticleContent() {
               Lưu Ý Quan Trọng Khi Thiết Kế Hòn Non Bộ Cho Người Mệnh Thủy
             </h1>
             <div className="flex flex-wrap items-center gap-6 text-white/80">
-              <span className="flex items-center gap-2">
-                <Calendar className="w-5 h-5" />
-                14 Tháng 5, 2024
-              </span>
+              
               <span className="flex items-center gap-2">
                 <User className="w-5 h-5" />
                 Nghệ Nhân Lê Anh
@@ -85,7 +82,7 @@ export default function MenhThuyArticleContent() {
           {/* Featured Image */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 
-              src="/traditional-vietnamese-rock-garden-landscape.jpg"
+              src="/16.jpg"
               alt="Hòn non bộ phong thủy cho người mệnh thủy"
               width={1200}
               height={800}
@@ -210,32 +207,7 @@ export default function MenhThuyArticleContent() {
               Các yếu tố đó sẽ rất tốt và tăng trường khí cho gia đình.
             </p>
 
-            <div className="grid md:grid-cols-2 gap-6 mb-6">
-              <div className="rounded-xl overflow-hidden shadow-lg">
-                <Image 
-                  src="/traditional-vietnamese-rock-garden-landscape.jpg"
-                  alt="Hòn non bộ ngoài trời"
-                  width={600}
-                  height={400}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="bg-gray-50 p-3 text-center">
-                  <p className="text-sm text-gray-600 font-medium">Hòn Non Bộ Ngoài Trời</p>
-                </div>
-              </div>
-              <div className="rounded-xl overflow-hidden shadow-lg">
-                <Image 
-                  src="/luxury-modern-koi-pond-villa-landscape.jpg"
-                  alt="Hòn non bộ trong nhà"
-                  width={600}
-                  height={400}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="bg-gray-50 p-3 text-center">
-                  <p className="text-sm text-gray-600 font-medium">Hòn Non Bộ Trong Nhà</p>
-                </div>
-              </div>
-            </div>
+            
           </section>
 
           {/* Section 3: Bố cục hòn non bộ */}
@@ -445,38 +417,7 @@ export default function MenhThuyArticleContent() {
             </div>
           </section>
 
-          {/* Gallery Section */}
-          <section className="mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">
-              Hình Ảnh Công Trình Hòn Non Bộ Cho Người Mệnh Thủy
-            </h2>
-            <p className="text-center text-gray-600 mb-8 text-lg">
-              Một số công trình tiêu biểu đã thi công
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-              {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-                  <Image 
-                    src="/traditional-vietnamese-rock-garden-landscape.jpg"
-                    alt={`Hòn non bộ mệnh thủy ${i}`}
-                    width={600}
-                    height={400}
-                    className="w-full h-64 object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center">
-              <Link href="/thu-vien-cong-trinh">
-                <button className="px-8 py-4 bg-blue-600 text-white font-bold rounded-full hover:bg-blue-700 transition-all hover:scale-105 shadow-xl">
-                  Xem Thêm Công Trình
-                  <ArrowRight className="inline-block ml-2 w-5 h-5" />
-                </button>
-              </Link>
-            </div>
-          </section>
+          
 
           
 

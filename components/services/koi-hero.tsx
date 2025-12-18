@@ -41,7 +41,7 @@ export default function KoiHero() {
             Thiết kế và thi công hồ cá Koi chuyên nghiệp, hợp phong thủy với hệ thống lọc nước hiện đại
             <br />
             <span className="text-base sm:text-lg text-emerald-200/75 block mt-3">
-              Bảo hành 5 năm · 200+ công trình hoàn thành
+              Bảo Hành 10 Năm · 200+ công trình hoàn thành
             </span>
           </p>
 
@@ -73,7 +73,7 @@ export default function KoiHero() {
                 <Shield className="w-6 h-6 text-emerald-300" />
               </div>
               <div className="text-left">
-                <h3 className="font-bold text-white mb-1">Bảo Hành 5 Năm</h3>
+                <h3 className="font-bold text-white mb-1">Bảo Hành 10 Năm</h3>
                 <p className="text-sm text-emerald-200">Cam kết chất lượng dài hạn</p>
               </div>
             </div>

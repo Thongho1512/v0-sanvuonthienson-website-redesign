@@ -92,7 +92,7 @@ export default function RootLayout({
               description: "Công ty thiết kế và thi công hồ cá Koi, hòn non bộ, tiểu cảnh sân vườn chuyên nghiệp",
               address: {
                 "@type": "PostalAddress",
-                streetAddress: "178/19/33 Trương Thị Hoa, P.19, P.Tân Thới Hiệp, Q12",
+                streetAddress: "178/19/33 Trương Thị Hoa, P.Tân Thới Hiệp, Q12",
                 addressLocality: "Thành phố Hồ Chí Minh",
                 addressRegion: "TP.HCM",
                 addressCountry: "VN",

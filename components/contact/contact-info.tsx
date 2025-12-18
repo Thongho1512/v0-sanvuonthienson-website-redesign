@@ -18,7 +18,7 @@ export default function ContactInfo() {
     {
       icon: MapPin,
       title: "Địa Chỉ Trụ Sở",
-      content: "178/19/33 Trương Thị Hoa, P.19, P.Tân Thới Hiệp, Q12, Tp. Hồ Chí Minh",
+      content: "178/19/33 Trương Thị Hoa, P.Tân Thới Hiệp, Q12, Tp. Hồ Chí Minh",
       color: "emerald",
     },
     {

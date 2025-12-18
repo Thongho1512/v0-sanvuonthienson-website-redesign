@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, User, Eye, ArrowRight } from "lucide-react"
+import { Calendar, User, Eye, ArrowRight, Mountain } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -71,7 +71,7 @@ export default function HonNonBoPhongThuyArticleContent() {
               <div className="bg-gradient-to-r from-stone-50 to-gray-50 rounded-2xl p-8 border-l-4 border-stone-600">
                 <div className="flex items-start gap-4 mb-4">
                   <div className="w-16 h-16 rounded-full bg-stone-600 flex items-center justify-center flex-shrink-0">
-                    <span className="text-3xl">🪨</span>
+                    <Mountain className="w-8 h-8 text-white" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-stone-900 mb-2">ĐÁ</h3>
@@ -143,7 +143,7 @@ export default function HonNonBoPhongThuyArticleContent() {
           {/* Featured Image 1 */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 
-              src="/traditional-vietnamese-rock-garden-landscape.jpg"
+              src="/12.jpg"
               alt="Mẫu hòn non bộ đẹp"
               width={1200}
               height={800}
@@ -181,59 +181,24 @@ export default function HonNonBoPhongThuyArticleContent() {
                   Những kiểu hòn non bộ kết hợp thác nước đẹp, phù hợp với gia đình bạn.
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/traditional-vietnamese-rock-garden-landscape.jpg"
-                        alt={`Hòn non bộ thác nước ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Hòn Non Bộ Trang Trí */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <span className="w-2 h-8 bg-amber-600 rounded-full"></span>
-                  Hòn Non Bộ Trang Trí
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/luxury-modern-koi-pond-villa-landscape.jpg"
-                        alt={`Hòn non bộ trang trí ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Hòn Non Bộ dành cho Chùa */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <span className="w-2 h-8 bg-orange-600 rounded-full"></span>
-                  Hòn Non Bộ Dành Cho Chùa
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/traditional-vietnamese-rock-garden-landscape.jpg"
-                        alt={`Hòn non bộ chùa ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/7.jpg"
+                      alt="Hòn non bộ thác nước"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/8.jpg"
+                      alt="Hòn non bộ thác nước"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -244,38 +209,24 @@ export default function HonNonBoPhongThuyArticleContent() {
                   Hòn Non Bộ Dành Cho Quán Cafe
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/modern-minimalist-garden-landscape-design.jpg"
-                        alt={`Hòn non bộ cafe ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Trang trí sân vườn cho trường mầm non */}
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-3">
-                  <span className="w-2 h-8 bg-pink-600 rounded-full"></span>
-                  Trang Trí Sân Vườn Cho Trường Mầm Non
-                </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/modern-minimalist-garden-landscape-design.jpg"
-                        alt={`Tiểu cảnh trường mầm non ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/32.jpg"
+                      alt="Hòn non bộ cafe"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/22.jpg"
+                      alt="Hòn non bộ cafe"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -286,17 +237,24 @@ export default function HonNonBoPhongThuyArticleContent() {
                   Tiểu Cảnh Gia Đình Theo Kích Thước
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/luxury-koi-pond-landscape-modern-design.jpg"
-                        alt={`Tiểu cảnh gia đình ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/18.jpg"
+                      alt="Tiểu cảnh gia đình"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/9.jpg"
+                      alt="Tiểu cảnh gia đình"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -307,17 +265,15 @@ export default function HonNonBoPhongThuyArticleContent() {
                   Tiểu Cảnh Hồ Cá Trong Nhà
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/luxury-koi-pond-landscape-modern-design.jpg"
-                        alt={`Tiểu cảnh hồ cá trong nhà ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/31.jpg"
+                      alt="Tiểu cảnh hồ cá trong nhà"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -328,17 +284,24 @@ export default function HonNonBoPhongThuyArticleContent() {
                   Thiết Kế, Trang Trí Sân Vườn Cho Resort
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {[1, 2].map((i) => (
-                    <div key={i} className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-                      <Image 
-                        src="/luxury-modern-koi-pond-villa-landscape.jpg"
-                        alt={`Sân vườn resort ${i}`}
-                        width={600}
-                        height={400}
-                        className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
-                      />
-                    </div>
-                  ))}
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/20.jpg"
+                      alt="Sân vườn resort"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                    <Image 
+                      src="/26.png"
+                      alt="Sân vườn resort"
+                      width={600}
+                      height={400}
+                      className="w-full h-80 object-cover hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -405,5 +368,3 @@ export default function HonNonBoPhongThuyArticleContent() {
     </article>
   )
 }
-
-            
