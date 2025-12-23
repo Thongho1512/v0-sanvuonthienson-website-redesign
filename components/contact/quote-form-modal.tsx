@@ -1,4 +1,3 @@
-// final
 "use client"
 
 import { useState, useEffect } from "react"
@@ -53,8 +52,11 @@ export default function QuoteFormModal() {
       
       // Set timer 3 phút
       const timer = setTimeout(() => {
-        setIsOpen(true)
-        localStorage.setItem(FORM_SHOWN_KEY, "true")
+        // Kiểm tra lại trước khi hiển thị (phòng trường hợp user đã đóng ở tab khác)
+        if (localStorage.getItem(FORM_SHOWN_KEY) !== "true") {
+          localStorage.setItem(FORM_SHOWN_KEY, "true")
+          setIsOpen(true)
+        }
       }, 180000) // 3 phút = 180000ms
 
       return () => clearTimeout(timer)
@@ -63,15 +65,18 @@ export default function QuoteFormModal() {
       const elapsedTime = currentTime - parseInt(firstVisitTime)
       
       if (elapsedTime >= 180000) {
-        // Đã qua 3 phút, hiển thị form ngay
-        setIsOpen(true)
+        // Đã qua 3 phút, set localStorage TRƯỚC rồi mới hiển thị
         localStorage.setItem(FORM_SHOWN_KEY, "true")
+        setIsOpen(true)
       } else {
         // Chưa đủ 3 phút, set timer cho thời gian còn lại
         const remainingTime = 180000 - elapsedTime
         const timer = setTimeout(() => {
-          setIsOpen(true)
-          localStorage.setItem(FORM_SHOWN_KEY, "true")
+          // Kiểm tra lại trước khi hiển thị
+          if (localStorage.getItem(FORM_SHOWN_KEY) !== "true") {
+            localStorage.setItem(FORM_SHOWN_KEY, "true")
+            setIsOpen(true)
+          }
         }, remainingTime)
 
         return () => clearTimeout(timer)
