@@ -1,22 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { Resend } from 'resend'
 
-// Configure your email service here
-// Using Gmail SMTP or another email service
-const transporter = nodemailer.createTransport({
-  host: process.env.EMAIL_HOST || 'smtp.gmail.com',
-  port: parseInt(process.env.EMAIL_PORT || '587'),
-  secure: process.env.EMAIL_SECURE === 'true', // true for 465, false for other ports
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASSWORD,
-  },
-})
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
+    // Log environment variables (masked)
+    console.log('🔧 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY)
+    console.log('🔧 RESEND_API_KEY length:', process.env.RESEND_API_KEY?.length)
+    console.log('🔧 RECIPIENT_EMAIL:', process.env.RECIPIENT_EMAIL)
+    console.log('🔧 RESEND_FROM_EMAIL:', process.env.RESEND_FROM_EMAIL)
+
     const body = await request.json()
     const { name, phone, projectType, investmentOption } = body
+
+    console.log('📝 Form data received:', { name, phone, projectType, investmentOption })
 
     // Validate required fields
     if (!name || !phone || !projectType || !investmentOption) {
@@ -28,59 +26,113 @@ export async function POST(request: NextRequest) {
 
     // Create email content
     const htmlContent = `
-      <h2>Yêu Cầu Tư Vấn Mới</h2>
-      <p><strong>Họ và tên:</strong> ${name}</p>
-      <p><strong>Số điện thoại:</strong> ${phone}</p>
-      <p><strong>Loại công trình:</strong> ${projectType}</p>
-      <p><strong>Mục đầu tư:</strong> ${investmentOption}</p>
-      <p><strong>Thời gian gửi:</strong> ${new Date().toLocaleString('vi-VN')}</p>
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #059669 0%, #0d9488 100%); color: white; padding: 30px; border-radius: 10px 10px 0 0; }
+            .content { background: #f9fafb; padding: 30px; border-radius: 0 0 10px 10px; }
+            .info-row { background: white; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #059669; }
+            .label { font-weight: bold; color: #059669; }
+            .value { color: #1f2937; margin-left: 10px; }
+            .footer { text-align: center; padding: 20px; color: #6b7280; font-size: 14px; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1 style="margin: 0;">🌿 Yêu Cầu Tư Vấn Mới</h1>
+              <p style="margin: 10px 0 0 0; opacity: 0.9;">Khách hàng vừa gửi yêu cầu tư vấn</p>
+            </div>
+            <div class="content">
+              <div class="info-row">
+                <span class="label">👤 Họ và tên:</span>
+                <span class="value">${name}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">📱 Số điện thoại:</span>
+                <span class="value">${phone}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">🏗️ Loại công trình:</span>
+                <span class="value">${projectType}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">💰 Mục đầu tư:</span>
+                <span class="value">${investmentOption}</span>
+              </div>
+              <div class="info-row">
+                <span class="label">⏰ Thời gian gửi:</span>
+                <span class="value">${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}</span>
+              </div>
+            </div>
+            <div class="footer">
+              <p>Email này được gửi tự động từ website Thiên Sơn Garden</p>
+            </div>
+          </div>
+        </body>
+      </html>
     `
 
     const textContent = `
-Yêu Cầu Tư Vấn Mới
+YÊU CẦU TƯ VẤN MỚI
 
 Họ và tên: ${name}
 Số điện thoại: ${phone}
 Loại công trình: ${projectType}
 Mục đầu tư: ${investmentOption}
-Thời gian gửi: ${new Date().toLocaleString('vi-VN')}
+Thời gian gửi: ${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}
+
+---
+Email này được gửi tự động từ website Thiên Sơn Garden
     `
 
-    // Send email to admin
-    await transporter.sendMail({
-      from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-      to: 'Thiensongarden@gmail.com',
-      subject: `Yêu cầu tư vấn từ ${name}`,
+    // Send email using Resend
+    console.log('📧 Attempting to send email...')
+    
+    const { data, error } = await resend.emails.send({
+      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+      to: process.env.RECIPIENT_EMAIL || 'thongho1512@gmail.com',
+      subject: `🌿 Yêu cầu tư vấn từ ${name}`,
       text: textContent,
       html: htmlContent,
     })
 
-    // Optionally send confirmation email to customer
-    if (process.env.SEND_CONFIRMATION_EMAIL === 'true') {
-      await transporter.sendMail({
-        from: process.env.EMAIL_FROM || process.env.EMAIL_USER,
-        to: phone, // This won't work for email confirmation, you might want to add email field
-        subject: 'Chúng tôi đã nhận được yêu cầu tư vấn của bạn',
-        html: `
-          <h2>Cảm ơn bạn!</h2>
-          <p>Chúng tôi đã nhận được yêu cầu tư vấn của bạn. Chúng tôi sẽ liên hệ với bạn trong vòng 30 phút.</p>
-          <p><strong>Thông tin đã nhận:</strong></p>
-          <p>Họ và tên: ${name}</p>
-          <p>Số điện thoại: ${phone}</p>
-          <p>Loại công trình: ${projectType}</p>
-          <p>Mục đầu tư: ${investmentOption}</p>
-        `,
-      })
+    console.log('📧 Resend response:', { data, error })
+
+    // Check for errors
+    if (error) {
+      console.error('❌ Resend API error:', error)
+      return NextResponse.json(
+        { 
+          error: 'Failed to send email', 
+          details: error.message || 'Unknown error from Resend API' 
+        },
+        { status: 500 }
+      )
     }
 
+    console.log('✅ Email sent successfully:', data?.id)
+
+    // Return success response
     return NextResponse.json(
-      { success: true, message: 'Email sent successfully' },
+      { 
+        success: true, 
+        message: 'Email sent successfully',
+        emailId: data?.id || 'unknown'
+      },
       { status: 200 }
     )
   } catch (error) {
     console.error('Email sending error:', error)
     return NextResponse.json(
-      { error: 'Failed to send email', details: error instanceof Error ? error.message : 'Unknown error' },
+      { 
+        error: 'Failed to send email', 
+        details: error instanceof Error ? error.message : 'Unknown error' 
+      },
       { status: 500 }
     )
   }
