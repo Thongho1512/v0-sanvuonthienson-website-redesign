@@ -18,8 +18,9 @@ const INVESTMENT_OPTIONS = [
   "Trên 700 triệu",
 ]
 
-// Thay số Zalo của bạn vào đây
-const ZALO_PHONE = "0394710774" // Thay bằng số Zalo của bạn
+const ZALO_PHONE = "0394710774"
+const FORM_SHOWN_KEY = "quote_form_shown" // Key để lưu vào localStorage
+const FIRST_VISIT_KEY = "first_visit_time" // Key lưu thời gian truy cập lần đầu
 
 export default function QuoteFormModal() {
   const router = useRouter()
@@ -33,11 +34,48 @@ export default function QuoteFormModal() {
   })
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsOpen(true)
-    }, 180000) // 3 minutes = 180000ms
+    // Kiểm tra xem form đã từng hiển thị chưa
+    const hasShownForm = localStorage.getItem(FORM_SHOWN_KEY)
+    
+    if (hasShownForm === "true") {
+      // Nếu đã hiển thị rồi thì không làm gì cả
+      return
+    }
 
-    return () => clearTimeout(timer)
+    // Kiểm tra thời gian truy cập lần đầu
+    const firstVisitTime = localStorage.getItem(FIRST_VISIT_KEY)
+    const currentTime = Date.now()
+
+    if (!firstVisitTime) {
+      // Lần đầu tiên truy cập, lưu thời gian
+      localStorage.setItem(FIRST_VISIT_KEY, currentTime.toString())
+      
+      // Set timer 3 phút
+      const timer = setTimeout(() => {
+        setIsOpen(true)
+        localStorage.setItem(FORM_SHOWN_KEY, "true")
+      }, 180000) // 3 phút = 180000ms
+
+      return () => clearTimeout(timer)
+    } else {
+      // Đã có thời gian truy cập, tính khoảng cách thời gian
+      const elapsedTime = currentTime - parseInt(firstVisitTime)
+      
+      if (elapsedTime >= 180000) {
+        // Đã qua 3 phút, hiển thị form ngay
+        setIsOpen(true)
+        localStorage.setItem(FORM_SHOWN_KEY, "true")
+      } else {
+        // Chưa đủ 3 phút, set timer cho thời gian còn lại
+        const remainingTime = 180000 - elapsedTime
+        const timer = setTimeout(() => {
+          setIsOpen(true)
+          localStorage.setItem(FORM_SHOWN_KEY, "true")
+        }, remainingTime)
+
+        return () => clearTimeout(timer)
+      }
+    }
   }, [])
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -48,12 +86,17 @@ export default function QuoteFormModal() {
     }))
   }
 
+  const handleClose = () => {
+    setIsOpen(false)
+    // Đánh dấu là đã hiển thị khi user đóng form
+    localStorage.setItem(FORM_SHOWN_KEY, "true")
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
     try {
-      // Gửi email qua API
       const response = await fetch('/api/send-quote', {
         method: 'POST',
         headers: {
@@ -66,7 +109,6 @@ export default function QuoteFormModal() {
         throw new Error('Failed to send email')
       }
 
-      // Reset form
       setIsOpen(false)
       setFormData({
         name: "",
@@ -75,7 +117,9 @@ export default function QuoteFormModal() {
         investmentOption: ""
       })
 
-      // Chuyển đến trang cảm ơn
+      // Đánh dấu là đã hiển thị khi submit thành công
+      localStorage.setItem(FORM_SHOWN_KEY, "true")
+      
       router.push("/cam-on")
     } catch (error) {
       console.error('Error submitting form:', error)
@@ -92,7 +136,7 @@ export default function QuoteFormModal() {
       <div className="relative bg-linear-to-br from-emerald-800 to-teal-900 rounded-2xl sm:rounded-3xl p-5 sm:p-8 w-full max-w-sm sm:max-w-md shadow-2xl border-2 border-white border-opacity-20 max-h-[90vh] overflow-y-auto">
         {/* Close Button */}
         <button
-          onClick={() => setIsOpen(false)}
+          onClick={handleClose}
           className="absolute top-3 right-3 sm:top-4 sm:right-4 text-white text-xl sm:text-2xl hover:text-opacity-80 transition p-1"
         >
           ✕
