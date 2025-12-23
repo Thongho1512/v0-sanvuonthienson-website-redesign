@@ -95,7 +95,7 @@ Email này được gửi tự động từ website Thiên Sơn Garden
     
     const { data, error } = await resend.emails.send({
       from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-      to: process.env.RECIPIENT_EMAIL || 'thongho1512@gmail.com',
+      to: process.env.RECIPIENT_EMAIL || 'Thiensongarden@gmail.com',
       subject: `🌿 Yêu cầu tư vấn từ ${name}`,
       text: textContent,
       html: htmlContent,
