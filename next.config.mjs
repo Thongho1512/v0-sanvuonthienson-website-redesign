@@ -4,9 +4,8 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   images: {
-    unoptimized: true, 
+    unoptimized: true,
   },
-  trailingSlash: true, // Thêm để tránh lỗi routing
 }
 
 export default nextConfig
