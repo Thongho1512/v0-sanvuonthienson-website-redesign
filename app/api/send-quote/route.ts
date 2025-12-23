@@ -70,7 +70,7 @@ export async function POST(request: NextRequest) {
               </div>
             </div>
             <div class="footer">
-              <p>Email này được gửi tự động từ website Thiên Sơn Garden</p>
+              <p>Email này được gửi tự động từ website Thiên Sơn Koi</p>
             </div>
           </div>
         </body>
@@ -87,7 +87,7 @@ Mục đầu tư: ${investmentOption}
 Thời gian gửi: ${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' })}
 
 ---
-Email này được gửi tự động từ website Thiên Sơn Garden
+Email này được gửi tự động từ website Thiên Sơn Koi
     `
 
     // Send email using Resend
