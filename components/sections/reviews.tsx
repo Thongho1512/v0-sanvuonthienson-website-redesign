@@ -1,14 +1,14 @@
 "use client"
 
 import { useScrollAnimation } from "@/hooks/use-scroll-animation"
-import { Card, CardContent } from "@/components/ui/card"
-import { Star, Quote } from "lucide-react"
+import { motion } from "framer-motion"
+import { Star } from "lucide-react"
 import Image from "next/image"
 
 const reviews = [
   {
     name: "Anh Minh Tuấn",
-    location: "Biệt thự An Cựu, Huế",
+    location: "Bình Thuận",
     avatar: "/vietnamese-man-professional-portrait.jpg",
     rating: 5,
     comment:
@@ -17,7 +17,7 @@ const reviews = [
   },
   {
     name: "Chị Thu Hương",
-    location: "Khu đô thị Phú Mỹ An",
+    location: "TP. Hồ Chí Minh",
     avatar: "/vietnamese-woman-professional-portrait.jpg",
     rating: 5,
     comment:
@@ -26,7 +26,7 @@ const reviews = [
   },
   {
     name: "Anh Quốc Huy",
-    location: "Resort Lăng Cô",
+    location: "Bình Phước",
     avatar: "/vietnamese-businessman-portrait.png",
     rating: 5,
     comment:
@@ -35,7 +35,7 @@ const reviews = [
   },
   {
     name: "Anh Đức Thịnh",
-    location: "Cafe Koi Huế",
+    location: "Đồng Nai",
     avatar: "/vietnamese-cafe-owner-portrait.jpg",
     rating: 5,
     comment:
@@ -44,81 +44,73 @@ const reviews = [
   },
 ]
 
-function ReviewCard({ review, index }: { review: (typeof reviews)[0]; index: number }) {
-  const { ref, isVisible } = useScrollAnimation(0.1)
-
-  return (
-    <Card
-      ref={ref}
-      className={`h-full border border-sage/20 bg-white shadow-lg hover:shadow-2xl transition-all duration-700 hover:-translate-y-2 ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-      }`}
-      style={{ transitionDelay: `${index * 100}ms` }}
-    >
-      <CardContent className="p-6 sm:p-8">
-        {/* Quote icon */}
-        <Quote className="h-10 w-10 text-sage/30 mb-4" />
-
-        {/* Rating */}
-        <div className="flex gap-1 mb-4">
-          {[...Array(review.rating)].map((_, i) => (
-            <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
-          ))}
-        </div>
-
-        <p className="text-gray-700 leading-relaxed mb-6 italic text-base">{review.comment}</p>
-
-        {/* Project tag */}
-        <span className="inline-block px-3 py-1 bg-sage/10 text-sage-dark text-sm font-medium rounded-full mb-6">
-          {review.project}
-        </span>
-
-        {/* Author info */}
-        <div className="flex items-center gap-4 pt-6 border-t border-gray-200">
-          <Image
-            src={review.avatar || "/placeholder.svg"}
-            alt={review.name}
-            width={48}
-            height={48}
-            className="rounded-full object-cover"
-          />
-          <div>
-            <p className="font-semibold text-gray-900">{review.name}</p>
-            <p className="text-sm text-gray-600">{review.location}</p>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
 export default function Reviews() {
   const { ref, isVisible } = useScrollAnimation(0.2)
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-gradient-to-b from-background to-sage/5 relative overflow-hidden">
-      <div className="absolute inset-0 bg-pattern-dots opacity-20" />
-
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+    <section 
+      ref={ref}
+      className="py-20 sm:py-28 bg-gradient-to-b from-emerald-50 to-white overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div
-          ref={ref}
-          className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
-          }`}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 sm:mb-20"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
-            Khách Hàng <span className="text-sage-dark">Nói Gì</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            Nhận Xét Của Khách Hàng
           </h2>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-            Hơn 180 khách hàng đã tin tưởng và hài lòng với dịch vụ của chúng tôi
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
+            Một số nhận xét của đối tác và khách hàng dành cho dịch vụ của Thiên Sơn Landscape
           </p>
-        </div>
+        </motion.div>
 
         {/* Reviews Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {reviews.map((review, index) => (
-            <ReviewCard key={index} review={review} index={index} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100"
+            >
+              {/* Quote Mark */}
+              <div className="text-4xl text-emerald-600 mb-3 leading-none">
+                "
+              </div>
+
+              {/* Review Text */}
+              <p className="text-gray-700 text-sm leading-relaxed mb-6 min-h-[120px] line-clamp-6">
+                {review.comment}
+              </p>
+
+              {/* Rating */}
+              <div className="flex gap-1 mb-6">
+                {Array(review.rating)
+                  .fill(null)
+                  .map((_, i) => (
+                    <Star
+                      key={i}
+                      size={18}
+                      className="fill-amber-400 text-amber-400"
+                    />
+                  ))}
+              </div>
+
+              {/* Customer Info */}
+              <div className="border-t border-gray-200 pt-4">
+                <p className="font-semibold text-gray-900 text-sm">
+                  {review.name}
+                </p>
+                <p className="text-xs text-gray-600">
+                  {review.location}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </div>
       </div>

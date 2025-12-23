@@ -28,6 +28,26 @@ export default function KoiArticleSection() {
             </p>
           </div>
 
+          {/* Video Section */}
+          <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl bg-black">
+            <video
+              width={1200}
+              height={675}
+              className="w-full h-auto"
+              autoPlay
+              muted
+              loop
+            >
+              <source src="/video/7.mp4" type="video/mp4" />
+              Trình duyệt của bạn không hỗ trợ video HTML5.
+            </video>
+            <div className="bg-gray-50 p-4 text-center">
+              <p className="text-sm text-gray-600 italic">
+                Video thực tế công trình thi công hồ cá Koi - Chất lượng cao, độ bền lâu dài
+              </p>
+            </div>
+          </div>
+
           {/* Featured Image */}
           <div className="mb-12 rounded-2xl overflow-hidden shadow-2xl">
             <Image 

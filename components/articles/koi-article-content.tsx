@@ -52,7 +52,7 @@ export default function KoiArticleContent() {
             
             <p className="text-gray-700 leading-relaxed text-lg">
               Chúng tôi tự hào là đơn vị thi công hồ cá koi chuyên nghiệp, uy tín, được nhiều gia chủ tin tưởng lựa chọn. 
-              Với đội ngũ kiến trúc sư, thợ thi công lành nghề với nghệ nhân nhiều năm kinh nghiệm, tâm huyết luôn tận tâm 
+              Với nghệ nhân Lê Anh, thợ thi công lành nghề với nghệ nhân nhiều năm kinh nghiệm, tâm huyết luôn tận tâm 
               mang đến gia chủ những công trình hồ cá koi đẹp, hoàn hảo nhất.
             </p>
           </div>

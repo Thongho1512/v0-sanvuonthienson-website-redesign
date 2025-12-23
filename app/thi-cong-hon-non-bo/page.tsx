@@ -4,6 +4,7 @@ import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
 import RockscapeHero from "@/components/services/rockscape-hero"
 import HonNonBoContent from "@/components/services/hon-non-bo-content"
+import ConstructionSteps from "@/components/services/construction-steps"
 
 export const metadata: Metadata = {
   title: "Thi Công Hòn Non Bộ Đẹp Hợp Phong Thủy | Thiên Sơn Landscape",
@@ -24,6 +25,7 @@ export default function RockscapePage() {
       <Header />
       <RockscapeHero />
       <HonNonBoContent />
+      <ConstructionSteps />
       <Footer />
       <FloatingContact />
     </main>

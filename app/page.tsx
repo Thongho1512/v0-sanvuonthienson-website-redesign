@@ -6,10 +6,12 @@ import FloatingContact from "@/components/layout/floating-contact"
 
 // Lazy load các components không cần thiết cho first paint
 const AboutIntro = lazy(() => import("@/components/sections/about-intro"))
+const Advantages = lazy(() => import("@/components/sections/advantages"))
 const Services = lazy(() => import("@/components/sections/services"))
 const Projects = lazy(() => import("@/components/sections/projects-showcase"))
 const Stats = lazy(() => import("@/components/sections/stats"))
 const HonNonBoCTA = lazy(() => import("@/components/sections/hon-non-bo-cta"))
+const Reviews = lazy(() => import("@/components/sections/reviews"))
 const CTASection = lazy(() => import("@/components/sections/cta-section"))
 
 // Loading skeleton component
@@ -40,6 +42,10 @@ export default function Home() {
       </Suspense>
 
       <Suspense fallback={<SectionSkeleton />}>
+        <Advantages />
+      </Suspense>
+
+      <Suspense fallback={<SectionSkeleton />}>
         <Stats />
       </Suspense>
       
@@ -56,13 +62,9 @@ export default function Home() {
         <Projects />
       </Suspense>
       
-      
-      
-      {/* <Suspense fallback={<SectionSkeleton />}>
+      <Suspense fallback={<SectionSkeleton />}>
         <Reviews />
-      </Suspense> */}
-      
-   
+      </Suspense>
       
       <Suspense fallback={<SectionSkeleton />}>
         <CTASection />
