@@ -35,7 +35,7 @@ export default function QuoteFormModal() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(true)
-    }, 1000) // 3 minutes = 180000ms
+    }, 180000) // 3 minutes = 180000ms
 
     return () => clearTimeout(timer)
   }, [])
