@@ -1,7 +1,6 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import QuoteFormModal from "@/components/contact/quote-form-modal"
 
 const VIETNAMESE_NAMES = [
   "Thị Hương",
@@ -157,7 +156,6 @@ function NotificationBanner() {
 export default function FloatingContact() {
   return (
     <>
-      <QuoteFormModal />
       <NotificationBanner />
       <div className="floating-contact">
         {/* Zalo Button with Official Logo */}

@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'export', // Xuất ra static files
   images: {
-    unoptimized: true, // BẮT BUỘC cho Cloudflare Pages
+    unoptimized: true, // Bắt buộc cho static export
   },
-  // KHÔNG dùng output: 'export' vì cần Cloudflare Functions
+  trailingSlash: true, // Tạo folder cho mỗi route
 }
 
 export default nextConfig
