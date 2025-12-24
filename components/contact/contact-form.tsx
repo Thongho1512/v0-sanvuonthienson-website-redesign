@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { useState } from "react"
-import { MessageCircle, Phone } from "lucide-react"
+import { MessageCircle, Phone, Loader2, CheckCircle, AlertCircle } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 const PROJECT_TYPES = [
   "Hòn non bộ",
@@ -27,7 +28,10 @@ const INVESTMENT_OPTIONS = [
 
 const ZALO_PHONE = "0938386679"
 
+type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
+
 export default function ContactForm() {
+  const router = useRouter()
   const { ref, isVisible } = useScrollAnimation()
   const [formData, setFormData] = useState({
     name: "",
@@ -35,11 +39,61 @@ export default function ContactForm() {
     projectType: "",
     investmentOption: ""
   })
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle')
+  const [errorMessage, setErrorMessage] = useState("")
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
-    // Tạo tin nhắn theo format đẹp
+    setSubmitStatus('submitting')
+    setErrorMessage("")
+
+    try {
+      // Gọi Cloudflare Function để gửi email
+      const response = await fetch('/api/send-quote', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        throw new Error(data.error || data.details || 'Failed to send email')
+      }
+
+      // Thành công
+      setSubmitStatus('success')
+      
+      // Reset form
+      setFormData({
+        name: "",
+        phone: "",
+        projectType: "",
+        investmentOption: ""
+      })
+
+      // Chuyển sang trang cảm ơn sau 1.5 giây
+      setTimeout(() => {
+        router.push('/cam-on')
+      }, 1500)
+
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('error')
+      setErrorMessage(error instanceof Error ? error.message : 'Đã xảy ra lỗi. Vui lòng thử lại.')
+      
+      // Reset status sau 5 giây
+      setTimeout(() => {
+        setSubmitStatus('idle')
+        setErrorMessage("")
+      }, 5000)
+    }
+  }
+
+  // Tạo tin nhắn Zalo
+  const handleZaloContact = () => {
     const message = `🌿 YÊU CẦU TƯ VẤN - THIÊN SƠN LANDSCAPE
 
 👤 Họ và tên: ${formData.name}
@@ -49,17 +103,8 @@ export default function ContactForm() {
 
 Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư vấn cho tôi. Cảm ơn!`
 
-    // Mở Zalo với tin nhắn đã soạn sẵn
     const zaloUrl = `https://zalo.me/${ZALO_PHONE}?text=${encodeURIComponent(message)}`
     window.open(zaloUrl, '_blank')
-    
-    // Reset form sau khi gửi
-    setFormData({
-      name: "",
-      phone: "",
-      projectType: "",
-      investmentOption: ""
-    })
   }
 
   const isFormValid = formData.name.length >= 3 && 
@@ -79,7 +124,7 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
           Gửi Yêu Cầu Tư Vấn
         </h2>
         <p className="text-sm sm:text-base text-gray-600 mb-6 sm:mb-8">
-          Điền thông tin bên dưới và gửi qua Zalo để được tư vấn nhanh nhất
+          Điền thông tin bên dưới để được tư vấn miễn phí
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
@@ -100,6 +145,7 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               required
               minLength={3}
+              disabled={submitStatus === 'submitting'}
               className="mt-2 h-12 sm:h-14 text-base sm:text-lg rounded-xl border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 px-4"
             />
             {formData.name && formData.name.length < 3 && (
@@ -125,6 +171,7 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
               onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
               required
               pattern="[0-9\s\-+]{9,}"
+              disabled={submitStatus === 'submitting'}
               className="mt-2 h-12 sm:h-14 text-base sm:text-lg rounded-xl border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 px-4"
             />
             {formData.phone && formData.phone.length < 9 && (
@@ -145,6 +192,7 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
               value={formData.projectType} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, projectType: value }))}
               required
+              disabled={submitStatus === 'submitting'}
             >
               <SelectTrigger className="mt-2 h-12 sm:h-14 text-base sm:text-lg rounded-xl border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 px-4 bg-white">
                 <SelectValue placeholder="Chọn loại công trình" className="text-gray-500" />
@@ -176,6 +224,7 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
               value={formData.investmentOption} 
               onValueChange={(value) => setFormData(prev => ({ ...prev, investmentOption: value }))}
               required
+              disabled={submitStatus === 'submitting'}
             >
               <SelectTrigger className="mt-2 h-12 sm:h-14 text-base sm:text-lg rounded-xl border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 px-4 bg-white">
                 <SelectValue placeholder="Chọn mức đầu tư" className="text-gray-500" />
@@ -194,6 +243,35 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
             </Select>
           </motion.div>
 
+          {/* Status Messages */}
+          {submitStatus === 'error' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3"
+            >
+              <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-red-900">Gửi yêu cầu thất bại</p>
+                <p className="text-xs text-red-700 mt-1">{errorMessage}</p>
+              </div>
+            </motion.div>
+          )}
+
+          {submitStatus === 'success' && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="p-4 rounded-xl bg-green-50 border border-green-200 flex items-start gap-3"
+            >
+              <CheckCircle className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="text-sm font-medium text-green-900">Gửi yêu cầu thành công!</p>
+                <p className="text-xs text-green-700 mt-1">Chúng tôi sẽ liên hệ với bạn sớm nhất. Đang chuyển hướng...</p>
+              </div>
+            </motion.div>
+          )}
+
           {/* Submit Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -201,18 +279,41 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
             transition={{ duration: 0.6, delay: 0.5 }}
             className="pt-2 space-y-3"
           >
-            {/* Primary Button - Gửi qua Zalo */}
+            {/* Primary Button - Submit Form qua Email */}
             <Button
               type="submit"
               size="lg"
-              disabled={!isFormValid}
-              className="w-full h-14 sm:h-16 text-base sm:text-lg font-semibold rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shadow-lg shadow-blue-600/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+              disabled={!isFormValid || submitStatus === 'submitting'}
+              className="w-full h-14 sm:h-16 text-base sm:text-lg font-semibold rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 shadow-lg shadow-emerald-600/30 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
             >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Gửi Yêu Cầu Qua Zalo
+              {submitStatus === 'submitting' ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Đang gửi...
+                </>
+              ) : (
+                <>
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Gửi Yêu Cầu Tư Vấn
+                </>
+              )}
             </Button>
 
-            {/* Secondary Button - Gọi điện */}
+            {/* Secondary Button - Chat Zalo (chỉ hiện khi form valid) */}
+            {isFormValid && submitStatus !== 'submitting' && (
+              <Button
+                type="button"
+                size="lg"
+                variant="outline"
+                onClick={handleZaloContact}
+                className="w-full h-14 sm:h-16 text-base sm:text-lg font-semibold rounded-full border-2 border-blue-600 text-blue-600 hover:bg-blue-50 transition-all duration-300"
+              >
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Hoặc Chat Qua Zalo
+              </Button>
+            )}
+
+            {/* Phone Button */}
             <Button
               type="button"
               size="lg"
@@ -222,7 +323,7 @@ Xin chào! Tôi quan tâm đến dịch vụ của Thiên Sơn. Vui lòng tư v�
             >
               <a href={`tel:${ZALO_PHONE}`}>
                 <Phone className="w-5 h-5 mr-2" />
-                Hoặc Gọi Ngay: {ZALO_PHONE}
+                Gọi Ngay: {ZALO_PHONE}
               </a>
             </Button>
           </motion.div>
