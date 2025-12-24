@@ -1,26 +1,35 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
+interface Env {
+  RESEND_API_KEY: string
+  RESEND_FROM_EMAIL: string
+  RECIPIENT_EMAIL: string
+}
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+interface RequestBody {
+  name: string
+  phone: string
+  projectType: string
+  investmentOption: string
+}
 
-export async function POST(request: NextRequest) {
+export async function onRequestPost(context: { 
+  request: Request
+  env: Env 
+}) {
   try {
-    // Log environment variables (masked)
-    console.log('🔧 RESEND_API_KEY exists:', !!process.env.RESEND_API_KEY)
-    console.log('🔧 RESEND_API_KEY length:', process.env.RESEND_API_KEY?.length)
-    console.log('🔧 RECIPIENT_EMAIL:', process.env.RECIPIENT_EMAIL)
-    console.log('🔧 RESEND_FROM_EMAIL:', process.env.RESEND_FROM_EMAIL)
-
-    const body = await request.json()
+    // Parse request body
+    const body = await context.request.json() as RequestBody
     const { name, phone, projectType, investmentOption } = body
 
     console.log('📝 Form data received:', { name, phone, projectType, investmentOption })
 
     // Validate required fields
     if (!name || !phone || !projectType || !investmentOption) {
-      return NextResponse.json(
-        { error: 'Missing required fields' },
-        { status: 400 }
+      return new Response(
+        JSON.stringify({ error: 'Missing required fields' }), 
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
       )
     }
 
@@ -90,50 +99,68 @@ Thời gian gửi: ${new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi
 Email này được gửi tự động từ website Thiên Sơn Koi
     `
 
-    // Send email using Resend
+    // Send email using Resend API
     console.log('📧 Attempting to send email...')
     
-    const { data, error } = await resend.emails.send({
-      from: process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
-      to: process.env.RECIPIENT_EMAIL || 'Thiensongarden@gmail.com',
-      subject: `🌿 Yêu cầu tư vấn từ ${name}`,
-      text: textContent,
-      html: htmlContent,
+    const resendResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${context.env.RESEND_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: context.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev',
+        to: context.env.RECIPIENT_EMAIL || 'Thiensongarden@gmail.com',
+        subject: `🌿 Yêu cầu tư vấn từ ${name}`,
+        text: textContent,
+        html: htmlContent,
+      }),
     })
 
-    console.log('📧 Resend response:', { data, error })
+    const resendData = await resendResponse.json()
+
+    console.log('📧 Resend response:', resendData)
 
     // Check for errors
-    if (error) {
-      console.error('❌ Resend API error:', error)
-      return NextResponse.json(
-        { 
+    if (!resendResponse.ok) {
+      console.error('❌ Resend API error:', resendData)
+      return new Response(
+        JSON.stringify({ 
           error: 'Failed to send email', 
-          details: error.message || 'Unknown error from Resend API' 
-        },
-        { status: 500 }
+          details: resendData.message || 'Unknown error from Resend API' 
+        }),
+        { 
+          status: 500,
+          headers: { 'Content-Type': 'application/json' },
+        }
       )
     }
 
-    console.log('✅ Email sent successfully:', data?.id)
+    console.log('✅ Email sent successfully:', resendData.id)
 
     // Return success response
-    return NextResponse.json(
-      { 
+    return new Response(
+      JSON.stringify({ 
         success: true, 
         message: 'Email sent successfully',
-        emailId: data?.id || 'unknown'
-      },
-      { status: 200 }
+        emailId: resendData.id || 'unknown'
+      }),
+      { 
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      }
     )
   } catch (error) {
-    console.error('Email sending error:', error)
-    return NextResponse.json(
-      { 
+    console.error('❌ Email sending error:', error)
+    return new Response(
+      JSON.stringify({ 
         error: 'Failed to send email', 
         details: error instanceof Error ? error.message : 'Unknown error' 
-      },
-      { status: 500 }
+      }),
+      { 
+        status: 500,
+        headers: { 'Content-Type': 'application/json' },
+      }
     )
   }
 }

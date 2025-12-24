@@ -15,6 +15,7 @@ const PROJECT_TYPES = [
   "Hòn non bộ",
   "Ao cá Koi",
   "Tiểu cảnh sân vườn",
+  "Cảnh quan tổng thể",
   "Khác"
 ]
 
@@ -42,6 +43,7 @@ export default function ContactForm() {
     setIsSubmitting(true)
 
     try {
+      // Gọi Cloudflare Function (không phải /api/send-quote nữa)
       const response = await fetch('/api/send-quote', {
         method: 'POST',
         headers: {
@@ -50,9 +52,13 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       })
 
+      const data = await response.json()
+
       if (!response.ok) {
-        throw new Error('Failed to send email')
+        throw new Error(data.details || 'Failed to send email')
       }
+
+      console.log('✅ Email sent successfully:', data)
 
       setIsSuccess(true)
       setFormData({
