@@ -6,4 +6,4 @@ const nextConfig = {
   // KHÔNG dùng output: 'export' vì cần Cloudflare Functions
 }
 
-module.exports = nextConfig
+export default nextConfig
