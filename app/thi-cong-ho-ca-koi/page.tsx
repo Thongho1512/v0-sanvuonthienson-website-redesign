@@ -4,6 +4,8 @@ import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
 import KoiHero from "@/components/services/koi-hero"
 import KoiArticleSection from "@/components/services/koi-article-section" 
+import Reviews from "@/components/sections/reviews"
+
 
 export const metadata: Metadata = {
   title: "Thi Công Hồ Cá Koi Chuyên Nghiệp | Thiên Sơn Landscape",
@@ -18,6 +20,7 @@ export default function KoiPage() {
       <Header />
       <KoiHero />
       <KoiArticleSection />
+      <Reviews />
       <Footer />
       <FloatingContact />
     </main>

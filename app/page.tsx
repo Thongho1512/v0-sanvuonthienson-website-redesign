@@ -62,9 +62,9 @@ export default function Home() {
         <Projects />
       </Suspense>
       
-      <Suspense fallback={<SectionSkeleton />}>
+      {/* <Suspense fallback={<SectionSkeleton />}>
         <Reviews />
-      </Suspense>
+      </Suspense> */}
       
       <Suspense fallback={<SectionSkeleton />}>
         <CTASection />
