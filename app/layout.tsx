@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import Script from "next/script"
 import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
+import QuoteFormModal from "@/components/contact/quote-form-modal" 
 import "./globals.css"
 
 const geist = Geist({ subsets: ["latin"] })
@@ -105,6 +106,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         
         {children}
         <Analytics />
+        {/* Thêm QuoteFormModal - sẽ hiện trên mọi trang */}
+        <QuoteFormModal />
 
         {/* Structured Data - LocalBusiness Schema */}
         <script
