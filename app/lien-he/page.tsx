@@ -1,9 +1,11 @@
+// app/lien-he/page.tsx
 import type { Metadata } from "next"
 import Header from "@/components/layout/header"
 import Footer from "@/components/layout/footer"
 import FloatingContact from "@/components/layout/floating-contact"
 import ContactHero from "@/components/contact/contact-hero"
 import ContactInfo from "@/components/contact/contact-info"
+import ContactForm from "@/components/contact/contact-form"
 
 export const metadata: Metadata = {
   title: "Liên Hệ Tư Vấn Miễn Phí | Thiên Sơn Landscape",
@@ -18,7 +20,13 @@ export default function ContactPage() {
       <Header />
       <ContactHero />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-        <ContactInfo />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Contact Information */}
+          <ContactInfo />
+          
+          {/* Contact Form */}
+          <ContactForm />
+        </div>
       </div>
       <Footer />
       <FloatingContact />
