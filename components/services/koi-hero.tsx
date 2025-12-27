@@ -15,7 +15,7 @@ export default function KoiHero() {
         <div className="absolute inset-0 bg-gradient-to-b from-emerald-900/90 via-emerald-800/70 to-emerald-900/85 z-10" />
         <Image
           src="/luxury-koi-pond-landscape-modern-design.jpg"
-          alt="Hồ cá Koi cao cấp"
+          alt="Thi công hồ cá Koi đẹp chuyên nghiệp"
           fill
           className="object-cover opacity-40 scale-110 animate-slow-zoom"
           priority
@@ -33,15 +33,15 @@ export default function KoiHero() {
           <h1 className="font-bold text-white mb-8 tracking-tighter">
             <span className="block mb-3 animate-slide-up">Thi Công Hồ Cá Koi</span>
             <span className="block mb-3 bg-gradient-to-r from-emerald-300 via-white to-emerald-300 bg-clip-text text-transparent animate-slide-up-delay-1">
-              Đẳng Cấp & Bền Vững
+              Đẹp & Chuyên Nghiệp
             </span>
           </h1>
 
           <p className="text-lg sm:text-xl md:text-2xl text-emerald-100/95 mb-12 max-w-3xl mx-auto leading-relaxed animate-slide-up-delay-2 px-4">
-            Thiết kế và thi công hồ cá Koi chuyên nghiệp, hợp phong thủy với hệ thống lọc nước hiện đại
+            Thiết kế và thi công hồ cá Koi đẹp, hợp phong thủy với hệ thống lọc nước hiện đại
             <br />
             <span className="text-base sm:text-lg text-emerald-200/75 block mt-3">
-              Bảo Hành 10 Năm · 200+ công trình hoàn thành
+              Bảo Hành 10 Năm · Tư Vấn Miễn Phí 24/7 · 200+ Công Trình
             </span>
           </p>
 
@@ -51,7 +51,7 @@ export default function KoiHero() {
                 size="lg"
                 className="bg-white text-emerald-900 hover:bg-emerald-100 px-8 py-6 text-base sm:text-lg rounded-full shadow-2xl hover:shadow-white/20 hover:scale-105 active:scale-95 transition-all duration-300 font-semibold"
               >
-                Tư Vấn Miễn Phí
+                Tư Vấn Miễn Phí Ngay
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
@@ -62,39 +62,55 @@ export default function KoiHero() {
                 variant="outline"
                 className="border-2 border-white text-white hover:bg-white/10 px-8 py-6 text-base sm:text-lg rounded-full backdrop-blur-sm hover:scale-105 active:scale-95 transition-all duration-300 bg-transparent font-semibold"
               >
-                Xem Công Trình
+                Xem Hồ Cá Koi Đẹp
               </Button>
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 card-hover">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Card 1: Bảo hành 10 năm */}
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="w-12 h-12 rounded-xl bg-emerald-500/20 flex items-center justify-center flex-shrink-0">
                 <Shield className="w-6 h-6 text-emerald-300" />
               </div>
               <div className="text-left">
-                <h3 className="font-bold text-white mb-1">Bảo Hành 10 Năm</h3>
-                <p className="text-sm text-emerald-200">Cam kết chất lượng dài hạn</p>
+                <h3 className="font-bold text-white mb-1 text-base">Bảo Hành 10 Năm</h3>
+                <p className="text-sm text-emerald-200">Cam kết chất lượng</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 card-hover">
+            {/* Card 2: Tư vấn miễn phí - MỚI THÊM */}
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-amber-400/30 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+              <div className="w-12 h-12 rounded-xl bg-amber-500/20 flex items-center justify-center flex-shrink-0">
+                <svg className="w-6 h-6 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div className="text-left">
+                <h3 className="font-bold text-white mb-1 text-base">Khảo Sát Miễn Phí</h3>
+                <p className="text-sm text-amber-200">Khảo sát 24/7</p>
+              </div>
+            </div>
+
+            {/* Card 3: Lọc nước hiện đại */}
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="w-12 h-12 rounded-xl bg-teal-500/20 flex items-center justify-center flex-shrink-0">
                 <Droplets className="w-6 h-6 text-teal-300" />
               </div>
               <div className="text-left">
-                <h3 className="font-bold text-white mb-1">Lọc Nước Hiện Đại</h3>
-                <p className="text-sm text-teal-200">Công Nghệ Tiên Tiến Bản</p>
+                <h3 className="font-bold text-white mb-1 text-base">Lọc Nước Hiện Đại</h3>
+                <p className="text-sm text-teal-200">Công nghệ Nhật</p>
               </div>
             </div>
 
-            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 card-hover">
+            {/* Card 4: Kinh nghiệm */}
+            <div className="flex items-start gap-4 p-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/15 transition-all duration-300 hover:scale-105 hover:shadow-2xl">
               <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center flex-shrink-0">
                 <Award className="w-6 h-6 text-blue-300" />
               </div>
               <div className="text-left">
-                <h3 className="font-bold text-white mb-1">15+ Năm Kinh Nghiệm</h3>
-                <p className="text-sm text-blue-200">200+ công trình hoàn thành</p>
+                <h3 className="font-bold text-white mb-1 text-base">15+ Năm</h3>
+                <p className="text-sm text-blue-200">200+ công trình</p>
               </div>
             </div>
           </div>
