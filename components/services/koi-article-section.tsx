@@ -505,8 +505,7 @@ export default function KoiArticleSection() {
             </div>
           </section>
 
-          FAQ Schema for SEO
-          <section className="mb-12 bg-gray-50 rounded-2xl p-8" id="faq-ho-ca-koi">
+          {/* <section className="mb-12 bg-gray-50 rounded-2xl p-8" id="faq-ho-ca-koi">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 text-center">
               ❓ CÂU HỎI THƯỜNG GẶP VỀ <span className="text-emerald-600">THI CÔNG HỒ CÁ KOI</span>
             </h2>
@@ -556,7 +555,7 @@ export default function KoiArticleSection() {
                 </p>
               </div>
             </div>
-          </section>
+          </section> */}
 
         </div>
       </div>

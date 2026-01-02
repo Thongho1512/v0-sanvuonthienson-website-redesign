@@ -9,38 +9,34 @@ const reviews = [
   {
     name: "Anh Minh Tuấn",
     location: "Bình Thuận",
-    avatar: "/vietnamese-man-professional-portrait.jpg",
+    projectImage: "/16.jpg",
     rating: 5,
     comment:
       "Đội ngũ Thiên Sơn làm việc rất chuyên nghiệp, tư vấn nhiệt tình. Hồ cá Koi nhà tôi sau 6 tháng vẫn hoạt động tốt, nước trong, cá khỏe mạnh. Rất hài lòng!",
-    project: "Hồ Cá Koi 50m²",
   },
   {
     name: "Chị Thu Hương",
     location: "TP. Hồ Chí Minh",
-    avatar: "/vietnamese-woman-professional-portrait.jpg",
+    projectImage: "/26.png",
     rating: 5,
     comment:
       "Hòn non bộ được thiết kế đẹp, bố cục phong thủy hợp lý. Mỗi lần về nhà nhìn thấy là thấy thư giãn. Cảm ơn team Thiên Sơn đã tạo nên không gian tuyệt vời!",
-    project: "Hòn Non Bộ Sân Vườn",
   },
   {
     name: "Anh Quốc Huy",
     location: "Bình Phước",
-    avatar: "/vietnamese-businessman-portrait.png",
+    projectImage: "/15.jpg",
     rating: 5,
     comment:
       "Dự án cảnh quan resort của chúng tôi được Thiên Sơn thực hiện rất xuất sắc. Khách du lịch đều khen ngợi. Sẽ tiếp tục hợp tác trong các dự án tới.",
-    project: "Cảnh Quan Resort",
   },
   {
     name: "Anh Đức Thịnh",
     location: "Đồng Nai",
-    avatar: "/vietnamese-cafe-owner-portrait.jpg",
+    projectImage: "/22.jpg",
     rating: 5,
     comment:
       "Hồ cá Koi trong quán cafe tôi được thiết kế độc đáo, thu hút rất nhiều khách. Hệ thống lọc hoạt động êm, không tốn nhiều điện. Đáng đồng tiền bát gạo!",
-    project: "Hồ Koi Quán Cafe",
   },
 ]
 
@@ -76,38 +72,57 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 30 }}
               animate={isVisible ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100"
+              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-emerald-100"
             >
-              {/* Quote Mark */}
-              <div className="text-4xl text-emerald-600 mb-3 leading-none">
-                "
+              {/* Ảnh công trình */}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={review.projectImage}
+                  alt={`Công trình  ${review.name}`}
+                  fill
+                  className="object-cover transition-transform duration-500 hover:scale-110"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                
+                {/* Badge loại công trình
+                <div className="absolute bottom-3 left-3 bg-emerald-600/90 backdrop-blur-sm px-3 py-1.5 rounded-full">
+                  <span className="text-white text-xs font-semibold">{review.project}</span>
+                </div> */}
               </div>
 
-              {/* Review Text */}
-              <p className="text-gray-700 text-sm leading-relaxed mb-6 min-h-[120px] line-clamp-6">
-                {review.comment}
-              </p>
+              {/* Nội dung */}
+              <div className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  
+                  <div>
+                    <p className="font-semibold text-gray-900 text-sm">
+                      {review.name}
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      {review.location}
+                    </p>
+                  </div>
+                </div>
 
-              {/* Rating */}
-              <div className="flex gap-1 mb-6">
-                {Array(review.rating)
-                  .fill(null)
-                  .map((_, i) => (
-                    <Star
-                      key={i}
-                      size={18}
-                      className="fill-amber-400 text-amber-400"
-                    />
-                  ))}
-              </div>
+                {/* Rating */}
+                <div className="flex gap-1 mb-4">
+                  {Array(review.rating)
+                    .fill(null)
+                    .map((_, i) => (
+                      <Star
+                        key={i}
+                        size={16}
+                        className="fill-amber-400 text-amber-400"
+                      />
+                    ))}
+                </div>
 
-              {/* Customer Info */}
-              <div className="border-t border-gray-200 pt-4">
-                <p className="font-semibold text-gray-900 text-sm">
-                  {review.name}
-                </p>
-                <p className="text-xs text-gray-600">
-                  {review.location}
+                
+
+                {/* Review Text */}
+                <p className="text-gray-700 text-sm leading-relaxed line-clamp-5">
+                  {review.comment}
                 </p>
               </div>
             </motion.div>

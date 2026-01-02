@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Loader2, CheckCircle, AlertCircle, X } from "lucide-react"
 
@@ -19,13 +19,11 @@ const INVESTMENT_OPTIONS = [
   "Trên 700 triệu",
 ]
 
-const FORM_SHOWN_KEY = "quote_form_shown"
-const FIRST_VISIT_KEY = "first_visit_time"
-
 type SubmitStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 export default function QuoteFormModal() {
   const router = useRouter()
+  const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>('idle')
   const [errorMessage, setErrorMessage] = useState("")
@@ -37,45 +35,24 @@ export default function QuoteFormModal() {
   })
 
   useEffect(() => {
-    const hasShownForm = localStorage.getItem(FORM_SHOWN_KEY)
+    // Reset timer mỗi khi đổi trang
+    const currentPath = pathname
+    const pageVisitKey = `page_visit_${currentPath}`
+    const lastVisit = sessionStorage.getItem(pageVisitKey)
     
-    if (hasShownForm === "true") {
-      return
-    }
-
-    const firstVisitTime = localStorage.getItem(FIRST_VISIT_KEY)
-    const currentTime = Date.now()
-
-    if (!firstVisitTime) {
-      localStorage.setItem(FIRST_VISIT_KEY, currentTime.toString())
-      
+    // Nếu trang này chưa hiện form trong session hiện tại
+    if (!lastVisit) {
+      // Đặt timer 30 giây
       const timer = setTimeout(() => {
-        if (localStorage.getItem(FORM_SHOWN_KEY) !== "true") {
-          localStorage.setItem(FORM_SHOWN_KEY, "true")
-          setIsOpen(true)
-        }
-      }, 30000) // 3 phút
+        setIsOpen(true)
+        // Đánh dấu đã hiện form cho trang này
+        sessionStorage.setItem(pageVisitKey, Date.now().toString())
+      }, 30000) // 30 giây
 
       return () => clearTimeout(timer)
-    } else {
-      const elapsedTime = currentTime - parseInt(firstVisitTime)
-      
-      if (elapsedTime >= 180000) {
-        localStorage.setItem(FORM_SHOWN_KEY, "true")
-        setIsOpen(true)
-      } else {
-        const remainingTime = 180000 - elapsedTime
-        const timer = setTimeout(() => {
-          if (localStorage.getItem(FORM_SHOWN_KEY) !== "true") {
-            localStorage.setItem(FORM_SHOWN_KEY, "true")
-            setIsOpen(true)
-          }
-        }, remainingTime)
-
-        return () => clearTimeout(timer)
-      }
     }
-  }, [])
+    
+  }, [pathname]) // Chạy lại mỗi khi pathname thay đổi
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -87,7 +64,10 @@ export default function QuoteFormModal() {
 
   const handleClose = () => {
     setIsOpen(false)
-    localStorage.setItem(FORM_SHOWN_KEY, "true")
+    // Đánh dấu đã đóng form cho trang hiện tại
+    const currentPath = pathname
+    const pageVisitKey = `page_visit_${currentPath}`
+    sessionStorage.setItem(pageVisitKey, Date.now().toString())
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -96,7 +76,6 @@ export default function QuoteFormModal() {
     setErrorMessage("")
 
     try {
-      // Gọi Cloudflare Function
       const response = await fetch('/api/send-quote', {
         method: 'POST',
         headers: {
@@ -111,13 +90,13 @@ export default function QuoteFormModal() {
         throw new Error(data.error || data.details || 'Failed to send email')
       }
 
-      // Thành công
       setSubmitStatus('success')
       
-      // Đánh dấu đã hiển thị
-      localStorage.setItem(FORM_SHOWN_KEY, "true")
+      // Đánh dấu đã gửi form
+      const currentPath = pathname
+      const pageVisitKey = `page_visit_${currentPath}`
+      sessionStorage.setItem(pageVisitKey, Date.now().toString())
       
-      // Đợi 1.5 giây để user thấy thông báo thành công
       setTimeout(() => {
         setIsOpen(false)
         router.push("/cam-on")
@@ -128,7 +107,6 @@ export default function QuoteFormModal() {
       setSubmitStatus('error')
       setErrorMessage(error instanceof Error ? error.message : 'Đã xảy ra lỗi. Vui lòng thử lại.')
       
-      // Reset status sau 5 giây để user có thể thử lại
       setTimeout(() => {
         setSubmitStatus('idle')
         setErrorMessage("")
